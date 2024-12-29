@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnrv4rjx31kjn"]
+
+[ext_resource type="Texture2D" uid="uid://b65in1fh35pch" path="res://Assets/Buildings/Constructor.png" id="1_sj4ak"]
+[ext_resource type="Script" path="res://Scripts/building.gd" id="2_u1thx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xanw3"]
+size = Vector2(593.917, 824.908)
+
+[node name="Constructor" type="Sprite2D"]
+position = Vector2(85.125, 117.965)
+scale = Vector2(0.286256, 0.286256)
+texture = ExtResource("1_sj4ak")
+script = ExtResource("2_u1thx")
+
+[node name="Overlay" type="ColorRect" parent="."]
+offset_left = -297.0
+offset_top = -412.0
+offset_right = 297.0
+offset_bottom = 412.0
+mouse_filter = 2
+color = Color(0.32549, 1, 1, 0.372549)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.458282, 0.33075)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_xanw3")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]

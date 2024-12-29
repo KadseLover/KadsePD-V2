@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://esdyxso1muty"]
+
+[ext_resource type="Texture2D" uid="uid://p1ol7u5qs5tl" path="res://Assets/Buildings/derallerechtesplitter.png" id="1_at13q"]
+[ext_resource type="Script" path="res://Scripts/building.gd" id="2_skwsd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xev0"]
+size = Vector2(616, 616)
+
+[node name="Splitter_te" type="Sprite2D"]
+position = Vector2(50.9854, 51)
+scale = Vector2(0.165584, 0.165584)
+texture = ExtResource("1_at13q")
+script = ExtResource("2_skwsd")
+
+[node name="Overlay" type="ColorRect" parent="."]
+offset_left = -308.0
+offset_top = -308.0
+offset_right = 308.0
+offset_bottom = 308.0
+mouse_filter = 2
+color = Color(0.32549, 1, 1, 0.372549)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.0881958, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1xev0")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]
