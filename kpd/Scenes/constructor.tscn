@@ -16,7 +16,7 @@ script = ExtResource("2_u1thx")
 offset_left = -297.0
 offset_top = -412.0
 offset_right = 297.0
-offset_bottom = 412.0
+offset_bottom = 419.0
 mouse_filter = 2
 color = Color(0.32549, 1, 1, 0.372549)
 
@@ -24,7 +24,6 @@ color = Color(0.32549, 1, 1, 0.372549)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.458282, 0.33075)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xanw3")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]

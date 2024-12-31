@@ -9,6 +9,7 @@ func _ready() -> void:
 	Overlay.hide()
 
 func _input(event: InputEvent) -> void:
+	#Check ob auf dem Building Mouse Input is
 	if Input.is_action_pressed("LMB") and mouse_in:
 		dragging = true
 		offset_ = position - Global.g_tile_pos
