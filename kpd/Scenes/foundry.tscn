@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2y1c"]
 size = Vector2(679, 792.167)
 
-[node name="Node2D" type="Sprite2D"]
-position = Vector2(102, 119.009)
-scale = Vector2(0.300442, 0.300442)
+[node name="Foundry" type="Sprite2D"]
+position = Vector2(119, 153.017)
+scale = Vector2(0.350516, 0.386321)
 texture = ExtResource("1_1erwk")
 script = ExtResource("2_p3a25")
 
@@ -26,5 +26,6 @@ color = Color(0.32549, 1, 1, 0.372549)
 position = Vector2(9.15527e-05, 9.15527e-05)
 shape = SubResource("RectangleShape2D_w2y1c")
 
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]

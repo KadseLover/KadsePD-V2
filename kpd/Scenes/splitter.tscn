@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xev0"]
 size = Vector2(616, 616)
 
-[node name="Splitter_te" type="Sprite2D"]
+[node name="Splitter" type="Sprite2D"]
 position = Vector2(50.9854, 51)
 scale = Vector2(0.165584, 0.165584)
 texture = ExtResource("1_at13q")
@@ -26,5 +26,6 @@ color = Color(0.32549, 1, 1, 0.372549)
 position = Vector2(0.0881958, 0)
 shape = SubResource("RectangleShape2D_1xev0")
 
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]

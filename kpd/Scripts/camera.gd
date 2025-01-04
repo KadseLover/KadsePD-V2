@@ -50,7 +50,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Cam_reset"):
 		Cam_x = 0
 		Cam_y = 0
-		zoom = Vector2(1,1)
 		self.set_position(Vector2(Cam_x, Cam_y))
 	
 	#Zoom
@@ -62,7 +61,7 @@ func _process(delta: float) -> void:
 				self.set_zoom(Vector2(_zoom, _zoom))
 		
 	if Input.is_action_just_pressed("zoom_out"):
-		if _zoom > 0.6:
+		if _zoom > 0.4:
 			_zoom -= zoom_str
 			zoom_scale += zoom_str
 			self.set_zoom(Vector2(_zoom, _zoom))

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqgj1ymktmhpn"]
+
+[ext_resource type="Script" path="res://Scripts/Belt.gd" id="1_e8c3u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rijh"]
+bg_color = Color(0.144062, 0.144063, 0.144062, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="Belt" type="Line2D"]
+points = PackedVector2Array(0, 0)
+width = 30.0
+default_color = Color(0.145098, 0.145098, 0.145098, 1)
+joint_mode = 2
+script = ExtResource("1_e8c3u")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5rijh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+input_pickable = true
+
+[connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event"]
