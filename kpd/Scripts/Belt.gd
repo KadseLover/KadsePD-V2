@@ -7,12 +7,11 @@ var delet_mode
 var cancelt
 var last_point
 var can_revert
-var id
 @onready var static_body: StaticBody2D = $StaticBody2D
-
 @onready var panel: Panel = $Panel
 
 func _ready() -> void:
+	Global.can_get_back = true
 	Global.can_drag = false
 	panel.show()
 	spawnt = true
@@ -39,18 +38,19 @@ func _input(event: InputEvent) -> void:
 					rect.extents = Vector2(length / 2, width / 2)
 					new_shape.shape = rect
 	
-	if id == 1:
+	if Global.id_belt == 1:
 		if Input.is_action_just_pressed("Belts"):
 			can_revert = false
 			cancelt = true
 			Global.light_cancel_belt.emit()
-	if id == 2:
+	if Global.id_belt == 2:
 		if Input.is_action_just_pressed("Pipe"):
 			can_revert = false
 			cancelt = true
 			Global.light_cancel_pipe.emit()
 	
 	if Input.is_action_just_pressed("Cancel"):
+		Global.can_get_back = false
 		can_revert = false
 		Global.can_drag = true
 		cancelt = true
@@ -84,6 +84,6 @@ func _on_static_body_2d_input_event(viewport: Node, event: InputEvent, shape_idx
 func index():
 	match name:
 		"Belt":
-			id = 1
+			Global.id_belt = 1
 		"Pipe":
-			id = 2
+			Global.id_belt = 2

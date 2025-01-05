@@ -25,7 +25,7 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if spawnt:
-		if id == 1:
+		if Global.id == 1:
 			position = Global.g_tile_pos + Vector2(0, 17)
 		else:
 			position = Global.g_tile_pos
@@ -56,10 +56,10 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 func index():
 	match name:
 		"Smelter":
-			id = 1
+			Global.id = 1
 		"Foundry":
-			id = 2
+			Global.id = 2
 		"Constructor":
-			id = 3
+			Global.id = 3
 		"Splitter":
-			id = 4
+			Global.id = 4

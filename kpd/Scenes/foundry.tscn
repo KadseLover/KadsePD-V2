@@ -7,6 +7,7 @@
 size = Vector2(679, 792.167)
 
 [node name="Foundry" type="Sprite2D"]
+z_index = 1
 position = Vector2(119, 153.017)
 scale = Vector2(0.350516, 0.386321)
 texture = ExtResource("1_1erwk")

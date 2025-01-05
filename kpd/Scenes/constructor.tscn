@@ -7,6 +7,7 @@
 size = Vector2(593.917, 824.908)
 
 [node name="Constructor" type="Sprite2D"]
+z_index = 1
 position = Vector2(85.125, 117.965)
 scale = Vector2(0.286256, 0.286256)
 texture = ExtResource("1_sj4ak")

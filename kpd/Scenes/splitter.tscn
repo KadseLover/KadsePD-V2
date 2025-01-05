@@ -7,6 +7,7 @@
 size = Vector2(616, 616)
 
 [node name="Splitter" type="Sprite2D"]
+z_index = 1
 position = Vector2(50.9854, 51)
 scale = Vector2(0.165584, 0.165584)
 texture = ExtResource("1_at13q")

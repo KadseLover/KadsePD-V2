@@ -24,3 +24,6 @@ offset_bottom = 15.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_l73v3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+input_pickable = true
+
+[connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event"]

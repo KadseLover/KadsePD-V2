@@ -32,6 +32,12 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("Delete"):
 		Global.delete_mode = false
 		del_ramen.hide()
+	
+	if Input.is_action_just_pressed("Belts"):
+		spawn_belt()
+	
+	if Input.is_action_just_pressed("Pipe"):
+		spawn_pipe()
 
 func belt_cancel():
 	Global.building = true
