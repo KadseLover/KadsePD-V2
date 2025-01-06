@@ -48,8 +48,8 @@ func _process(delta: float) -> void:
 		self.set_position(Vector2(Cam_x, Cam_y))
 	
 	if Input.is_action_just_pressed("Cam_reset"):
-		Cam_x = 5500
-		Cam_y = 3500
+		Cam_x = 0
+		Cam_y = 0
 		self.set_position(Vector2(Cam_x, Cam_y))
 	
 	#Zoom

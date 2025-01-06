@@ -7,6 +7,7 @@ var delet_mode
 var cancelt
 var last_point
 var can_revert
+var mouse_in
 @onready var static_body: StaticBody2D = $StaticBody2D
 @onready var panel: Panel = $Panel
 
@@ -73,7 +74,6 @@ func _process(delta: float) -> void:
 			set_point_position(point, to_local(Global.g_tile_pos))
 		else:
 			set_point_position(point, get_point_position(last_point))
-	
 
 
 
@@ -87,3 +87,11 @@ func index():
 			Global.id_belt = 1
 		"Pipe":
 			Global.id_belt = 2
+
+
+func _on_static_body_2d_mouse_entered() -> void:
+	mouse_in = true
+
+
+func _on_static_body_2d_mouse_exited() -> void:
+	mouse_in = false
