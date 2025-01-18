@@ -18,7 +18,7 @@ offset_left = -297.0
 offset_top = -412.0
 offset_right = 297.0
 offset_bottom = 419.0
-mouse_filter = 2
+mouse_filter = 1
 color = Color(0.32549, 1, 1, 0.372549)
 
 [node name="Area2D" type="Area2D" parent="."]

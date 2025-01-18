@@ -5,6 +5,7 @@ var dragging
 var spawnt
 var offset_
 var id
+var selectet
 @onready var Overlay: ColorRect = $Overlay
 
 
@@ -12,8 +13,11 @@ func _ready() -> void:
 	spawnt = true
 	Overlay.hide()
 	index()
+	Global.connect("change_color", update_color)
 
 func _input(event: InputEvent) -> void:
+	if Global.in_menu:
+		return
 	#Check ob auf dem Building Mouse Input is
 	if Input.is_action_just_pressed("LMB") and mouse_in:
 		dragging = true
@@ -22,6 +26,15 @@ func _input(event: InputEvent) -> void:
 	if !Input.is_action_pressed("LMB"):
 		top_level = false
 		dragging = false
+	
+	if Input.is_action_just_pressed("RMB") and mouse_in:
+		selectet = true
+		modulate = Color.GRAY
+	
+	if Input.is_action_just_pressed("LMB") and !mouse_in and !Global.con_menu_mouse and !Global.in_menu:
+		selectet = false
+		modulate = Color.WHITE
+
 	
 
 func _process(delta: float) -> void:
@@ -42,11 +55,13 @@ func _process(delta: float) -> void:
 
 func _on_mouse_entered() -> void:
 	mouse_in = true
+	Global.building_focus = true
 	Overlay.show()
 
 
 func _on_mouse_exited() -> void:
 	mouse_in = false
+	Global.building_focus = false
 	Overlay.hide()
 
 
@@ -64,3 +79,7 @@ func index():
 			Global.id = 3
 		"Splitter":
 			Global.id = 4
+
+func update_color():
+	if selectet:
+		self_modulate = Global.new_color

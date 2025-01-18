@@ -46,7 +46,8 @@ func _on_mouse_entered() -> void:
 
 func _on_finsh_color_pressed() -> void:
 	edit_color = $"../CanvasLayer/Ediors/ColorEdit/ColorPicker".color
-	print(edit_color)
+	Global.new_color = edit_color
+	Global.emit_signal("change_color")
 	color_edit.hide()
 	Global.in_menu = false
 
@@ -62,3 +63,8 @@ func _on_draw() -> void:
 		change_text.disabled = false
 	else:
 		change_text.disabled = true
+	
+	if Global.building_focus:
+		color.disabled = false
+	else:
+		color.disabled = true
