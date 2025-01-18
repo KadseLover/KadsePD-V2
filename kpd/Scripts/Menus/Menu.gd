@@ -41,3 +41,7 @@ func _on_back_men_pressed() -> void:
 	hide()
 	label_dings.hide()
 	menu.show()
+
+
+func _on_text_pressed() -> void:
+	pass # Replace with function body.

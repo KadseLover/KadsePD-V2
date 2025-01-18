@@ -3,8 +3,8 @@ extends TileMapLayer
 
 var local_pos
 var pos = Vector2i()
-@export var height = 100
-@export var breite = 100
+var height = 400
+var breite = 400
 
 func _ready() -> void:
 	fill()
@@ -21,7 +21,7 @@ func fill():
 		set_tiles()
 		check()
 	set_tiles()
-	
+
 func check():
 	if pos.x == breite:
 		pos.x -= breite
@@ -31,4 +31,4 @@ func set_tiles():
 	for i in breite:
 		set_cell(pos, 1, Vector2(0,0),0)
 		pos.x += 1
-	print(pos)
+	#print(pos)

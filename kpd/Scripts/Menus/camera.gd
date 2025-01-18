@@ -14,6 +14,8 @@ func _ready() -> void:
 	#Kamera Zentrieren
 	Cam_y = position.y
 	Cam_x = position.x
+	
+	Global.connect("rad_focus", focus_rad)
 
 func _input(event: InputEvent) -> void:
 	#Mouse Movement
@@ -65,3 +67,6 @@ func _process(delta: float) -> void:
 			_zoom -= zoom_str
 			zoom_scale += zoom_str
 			self.set_zoom(Vector2(_zoom, _zoom))
+
+func focus_rad():
+	position = get_global_mouse_position()

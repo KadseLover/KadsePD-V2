@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvxjbxwvb40t6"]
+
+[ext_resource type="Theme" uid="uid://dj32msjjeg33q" path="res://Assets/Anderes/Theme.tres" id="1_f46bq"]
+[ext_resource type="Script" path="res://Scripts/Menus/text.gd" id="2_cmlvo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1eo0p"]
+bg_color = Color(0, 0, 0, 0.690196)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_blend = true
+
+[node name="Text" type="Label"]
+z_index = 1
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -904.0
+offset_bottom = -615.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_f46bq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1eo0p")
+text = "Test Text"
+script = ExtResource("2_cmlvo")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

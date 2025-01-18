@@ -1,12 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmafffcarojsq"]
+[gd_scene load_steps=20 format=3 uid="uid://bmafffcarojsq"]
 
 [ext_resource type="Script" path="res://Scripts/print.gd" id="1_t1psh"]
 [ext_resource type="Texture2D" uid="uid://c1a07canohjxf" path="res://Assets/Anderes/Sub-Found.png" id="1_v27ud"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="2_pmsod"]
-[ext_resource type="Script" path="res://Scripts/camera.gd" id="3_37iuq"]
+[ext_resource type="Script" path="res://Scripts/Menus/camera.gd" id="4_shos3"]
 [ext_resource type="Theme" uid="uid://dj32msjjeg33q" path="res://Assets/Anderes/Theme.tres" id="4_yi8w6"]
-[ext_resource type="Script" path="res://Scripts/Menu.gd" id="5_8hfqu"]
+[ext_resource type="Script" path="res://Scripts/Menus/Menu.gd" id="6_g75uk"]
 [ext_resource type="Texture2D" uid="uid://wwiydl0vwgb7" path="res://Assets/Anderes/Ramen.png" id="7_c5o0u"]
+[ext_resource type="Script" path="res://Scripts/Menus/con_menu.gd" id="8_eao22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4i4w"]
 texture = ExtResource("1_v27ud")
@@ -56,11 +57,9 @@ script = ExtResource("1_t1psh")
 z_index = -1
 tile_set = SubResource("TileSet_kjn6e")
 script = ExtResource("2_pmsod")
-height = 200
-breite = 200
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_37iuq")
+script = ExtResource("4_shos3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -84,7 +83,7 @@ offset_top = 535.0
 offset_right = 1152.0
 offset_bottom = 648.0
 theme = ExtResource("4_yi8w6")
-script = ExtResource("5_8hfqu")
+script = ExtResource("6_g75uk")
 
 [node name="Main" type="GridContainer" parent="CanvasLayer/Container"]
 layout_mode = 2
@@ -194,9 +193,128 @@ offset_bottom = 648.0
 texture = ExtResource("7_c5o0u")
 expand_mode = 1
 
+[node name="Ediors" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEditor" type="Panel" parent="CanvasLayer/Ediors"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -95.0
+offset_right = 151.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_yi8w6")
+
+[node name="Text Edit" type="TextEdit" parent="CanvasLayer/Ediors/TextEditor"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -90.5
+offset_right = 146.0
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Edit Text"
+
+[node name="Finsh_text" type="Button" parent="CanvasLayer/Ediors/TextEditor"]
+layout_mode = 0
+offset_top = 197.0
+offset_right = 80.0
+offset_bottom = 229.0
+text = "Finish"
+
+[node name="ColorEdit" type="Panel" parent="CanvasLayer/Ediors"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -165.0
+offset_right = 151.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_yi8w6")
+
+[node name="ColorPicker" type="ColorPicker" parent="CanvasLayer/Ediors/ColorEdit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -162.0
+offset_right = 149.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+edit_alpha = false
+color_modes_visible = false
+sliders_visible = false
+presets_visible = false
+
+[node name="Finsh_color" type="Button" parent="CanvasLayer/Ediors/ColorEdit"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 333.0
+offset_right = 82.0
+offset_bottom = 365.0
+text = "Finish"
+
+[node name="Con_menu" type="PanelContainer" parent="."]
+z_index = 2
+offset_right = 162.0
+offset_bottom = 118.0
+theme = ExtResource("4_yi8w6")
+script = ExtResource("8_eao22")
+
+[node name="GridContainer" type="GridContainer" parent="Con_menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Text" type="Button" parent="Con_menu/GridContainer"]
+layout_mode = 2
+text = "Add Text"
+
+[node name="Change Text" type="Button" parent="Con_menu/GridContainer"]
+layout_mode = 2
+text = "Change Text"
+
+[node name="Color" type="Button" parent="Con_menu/GridContainer"]
+layout_mode = 2
+text = "Change Color"
+
 [connection signal="pressed" from="CanvasLayer/Container/Main/Back_men" to="CanvasLayer/Container" method="_on_back_men_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Main/Production" to="CanvasLayer/Container" method="_on_production_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Main/Logistic" to="CanvasLayer/Container" method="_on_logistic_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/Main/Text" to="." method="_on_text_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Production/Back" to="CanvasLayer/Container" method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Production/Constructor" to="." method="_on_constructor_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Production/Smelter" to="." method="_on_smelter_pressed"]
@@ -206,3 +324,17 @@ expand_mode = 1
 [connection signal="pressed" from="CanvasLayer/Container/Logistic/Pipe" to="." method="_on_pipe_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Logistic/Splitter" to="." method="_on_splitter_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu" to="CanvasLayer/Container" method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Ediors/TextEditor/Finsh_text" to="Con_menu" method="_on_finsh_text_pressed"]
+[connection signal="pressed" from="CanvasLayer/Ediors/ColorEdit/Finsh_color" to="Con_menu" method="_on_finsh_color_pressed"]
+[connection signal="draw" from="Con_menu" to="Con_menu" method="_on_draw"]
+[connection signal="mouse_entered" from="Con_menu" to="Con_menu" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Con_menu" to="Con_menu" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Con_menu/GridContainer/Text" to="Con_menu" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Con_menu/GridContainer/Text" to="Con_menu" method="_on_mouse_exited"]
+[connection signal="pressed" from="Con_menu/GridContainer/Text" to="Con_menu" method="_on_text_pressed"]
+[connection signal="mouse_entered" from="Con_menu/GridContainer/Change Text" to="Con_menu" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Con_menu/GridContainer/Change Text" to="Con_menu" method="_on_mouse_exited"]
+[connection signal="pressed" from="Con_menu/GridContainer/Change Text" to="Con_menu" method="_on_change_text_pressed"]
+[connection signal="mouse_entered" from="Con_menu/GridContainer/Color" to="Con_menu" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Con_menu/GridContainer/Color" to="Con_menu" method="_on_mouse_exited"]
+[connection signal="pressed" from="Con_menu/GridContainer/Color" to="Con_menu" method="_on_color_pressed"]

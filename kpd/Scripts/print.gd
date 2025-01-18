@@ -2,17 +2,21 @@ extends Node2D
 
 @onready var fps: Label = $CanvasLayer/fps
 @onready var del_ramen: TextureRect = $CanvasLayer/del_ramen
+@onready var Con_menu: PanelContainer = $Con_menu
 var PIPE = preload("res://Scenes/pipe.tscn")
-var CONSTRUCTOR = preload("res://Scenes/constructor.tscn")
-var FOUNDRY = preload("res://Scenes/foundry.tscn")
-var SMELTER = preload("res://Scenes/smelter.tscn")
-var SPLITTER = preload("res://Scenes/splitter.tscn")
+var CONSTRUCTOR = preload("res://Scenes/Buildings/constructor.tscn")
+var FOUNDRY = preload("res://Scenes/Buildings/foundry.tscn")
+var SMELTER = preload("res://Scenes/Buildings/smelter.tscn")
+var SPLITTER = preload("res://Scenes/Buildings/splitter.tscn")
 var BELT = preload("res://Scenes/belt.tscn")
+var TEXT = preload("res://Scenes/text.tscn")
 
 func _ready() -> void:
 	Global.connect("light_cancel_belt", belt_cancel)
 	Global.connect("light_cancel_pipe", pipe_cancel)
 	fps.hide()
+	Con_menu.hide()
+	
 
 func _process(delta: float) -> void:
 	fps.set_text("FPS: %d" % Engine.get_frames_per_second())
@@ -22,6 +26,9 @@ func _input(event: InputEvent) -> void:
 		fps.show()
 	if Input.is_action_just_pressed("hide_fps"):
 		fps.hide()
+	
+	if Global.in_menu:
+		return
 	
 	if Input.is_action_just_pressed("Belts"):
 		spawn_belt()
@@ -33,11 +40,33 @@ func _input(event: InputEvent) -> void:
 		Global.delete_mode = false
 		del_ramen.hide()
 	
+	if Input.is_action_just_pressed("RMB"):
+		Con_menu.hide()
+		Con_menu.show()
+		Con_menu.position = get_global_mouse_position()
+	
 	if Input.is_action_just_pressed("Belts"):
 		spawn_belt()
 	
 	if Input.is_action_just_pressed("Pipe"):
 		spawn_pipe()
+
+	if Input.is_action_just_pressed("Constructor"):
+		spawn_constructor()
+	
+	if Input.is_action_just_pressed("Foundry"):
+		spawn_foundry()
+	
+	if Input.is_action_just_pressed("Smelter"):
+		spawn_smelter()
+	
+	if Input.is_action_just_pressed("Splitter"):
+		spawn_splitter()
+
+func spawn_text():
+	var new_text = TEXT.instantiate()
+	new_text.position = get_global_mouse_position()
+	add_child(new_text)
 
 func belt_cancel():
 	Global.building = true
@@ -100,3 +129,6 @@ func _on_belt_pressed() -> void:
 
 func _on_pipe_pressed() -> void:
 	spawn_pipe()
+
+func _on_text_pressed() -> void:
+	spawn_text()

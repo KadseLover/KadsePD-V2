@@ -22,6 +22,7 @@ func _input(event: InputEvent) -> void:
 	if !Input.is_action_pressed("LMB"):
 		top_level = false
 		dragging = false
+	
 
 func _process(delta: float) -> void:
 	if spawnt:
