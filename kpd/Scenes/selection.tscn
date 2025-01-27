@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxnhbjarxmvbb"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/Selection.gd" id="1_75uoy"]
+[ext_resource type="Theme" uid="uid://dj32msjjeg33q" path="res://Assets/Anderes/Theme.tres" id="1_joxqd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yjl7"]
+
+[node name="Selection" type="Node"]
+
+[node name="Box" type="Panel" parent="."]
+z_index = 2
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_joxqd")
+script = ExtResource("1_75uoy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1yjl7")

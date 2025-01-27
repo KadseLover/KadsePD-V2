@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dj32msjjeg33q"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dj32msjjeg33q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5floe"]
 bg_color = Color(1, 0.435294, 0.0666667, 0.678431)
@@ -8,6 +8,16 @@ bg_color = Color(0.776471, 0.321569, 0, 0.529412)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p144"]
 bg_color = Color(0.88, 0.366667, 0, 0.631373)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbxnj"]
+bg_color = Color(0, 0.683474, 0.752897, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jfau"]
+bg_color = Color(0.80152, 0, 0.186283, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mosa1"]
+color = Color(1, 1, 1, 1)
+thickness = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjeyo"]
 bg_color = Color(0, 0, 0, 0.341176)
@@ -64,6 +74,9 @@ Button/font_sizes/font_size = 23
 Button/styles/focus = SubResource("StyleBoxFlat_5floe")
 Button/styles/hover = SubResource("StyleBoxFlat_4a1xj")
 Button/styles/normal = SubResource("StyleBoxFlat_7p144")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_mbxnj")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_5jfau")
+HSlider/styles/slider = SubResource("StyleBoxLine_mosa1")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/styles/normal = SubResource("StyleBoxFlat_fjeyo")
 Panel/styles/panel = SubResource("StyleBoxFlat_w4nef")

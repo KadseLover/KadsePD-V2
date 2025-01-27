@@ -17,8 +17,8 @@ clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -904.0
-offset_bottom = -615.0
+offset_right = -1062.0
+offset_bottom = -616.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -27,5 +27,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1eo0p")
 text = "Test Text"
 script = ExtResource("2_cmlvo")
 
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

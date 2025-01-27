@@ -15,7 +15,6 @@ func _ready() -> void:
 	Cam_y = position.y
 	Cam_x = position.x
 	
-	Global.connect("rad_focus", focus_rad)
 
 func _input(event: InputEvent) -> void:
 	#Mouse Movement
@@ -56,17 +55,14 @@ func _process(delta: float) -> void:
 	
 	#Zoom
 	if Input.is_action_just_pressed("zoom_in"):
-			if _zoom <= 1.5:
-				_zoom += zoom_str
-				if zoom_scale >= 0.3:
-					zoom_scale -= zoom_str
-				self.set_zoom(Vector2(_zoom, _zoom))
+		if _zoom <= 1.5:
+			_zoom += zoom_str
+			if zoom_scale >= 0.3:
+				zoom_scale -= zoom_str
+			self.set_zoom(Vector2(_zoom, _zoom))
 		
 	if Input.is_action_just_pressed("zoom_out"):
 		if _zoom > 0.4:
 			_zoom -= zoom_str
 			zoom_scale += zoom_str
 			self.set_zoom(Vector2(_zoom, _zoom))
-
-func focus_rad():
-	position = get_global_mouse_position()

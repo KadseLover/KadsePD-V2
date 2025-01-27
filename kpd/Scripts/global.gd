@@ -14,9 +14,14 @@ var new_text
 var con_menu_mouse
 var in_menu
 var new_color
+var AABB_
+var selection_visible
+var print_size
+var print_name
+var build_coords
 
 signal light_cancel_belt
 signal light_cancel_pipe
-signal rad_focus
 signal change_text
 signal change_color
+signal AABB_hiden

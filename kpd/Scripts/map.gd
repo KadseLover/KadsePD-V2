@@ -3,8 +3,8 @@ extends TileMapLayer
 
 var local_pos
 var pos = Vector2i()
-var height = 400
-var breite = 400
+var height = 1000
+var breite = 1000
 
 func _ready() -> void:
 	fill()
@@ -17,18 +17,17 @@ func _process(delta: float) -> void:
 	Global.g_tile_pos = map_to_local(local_pos) 
 
 func fill():
-	for i in height:
+	for i in Global.print_size:
 		set_tiles()
 		check()
 	set_tiles()
 
 func check():
-	if pos.x == breite:
-		pos.x -= breite
-		pos.y += 1
+	pos.x -= Global.print_size
+	pos.y += 1
 
 func set_tiles():
-	for i in breite:
+	for i in Global.print_size:
 		set_cell(pos, 1, Vector2(0,0),0)
 		pos.x += 1
 	#print(pos)

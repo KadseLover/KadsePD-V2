@@ -19,9 +19,6 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("LMB") and !mouse_in:
 		hide()
 
-func _process(delta: float) -> void:
-	pass
-
 func _on_text_pressed() -> void:
 	var new_text = TEXT.instantiate()
 	new_text.position = get_global_mouse_position()

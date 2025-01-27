@@ -34,6 +34,8 @@ func _process(delta: float) -> void:
 			spawnt = false
 	if dragging:
 		position = get_global_mouse_position() + offset_
+	
+	
 
 func update():
 	if selectet:
@@ -47,3 +49,8 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	mouse_in = false
 	Global.text_focus = false
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("LMB") and Global.delete_mode:
+		queue_free()

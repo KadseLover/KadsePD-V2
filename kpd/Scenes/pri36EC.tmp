@@ -179,7 +179,6 @@ text = "Menu"
 visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
-mouse_filter = 2
 texture = ExtResource("7_c5o0u")
 expand_mode = 1
 
@@ -278,34 +277,32 @@ offset_bottom = 365.0
 text = "Finish"
 
 [node name="Labels" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-metadata/_edit_use_anchors_ = true
 
 [node name="fps" type="Label" parent="CanvasLayer/Labels"]
-modulate = Color(1, 0, 0, 1)
+visible = false
+modulate = Color(0.877577, 0, 0, 1)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS"
-metadata/_edit_use_anchors_ = true
 
 [node name="Coords" type="Label" parent="CanvasLayer/Labels"]
+visible = false
 layout_mode = 0
-offset_top = 62.0
+offset_top = 111.0
 offset_right = 55.0
-offset_bottom = 85.0
+offset_bottom = 134.0
 text = "Coords"
-metadata/_edit_use_anchors_ = true
 
 [node name="name" type="Label" parent="CanvasLayer/Labels"]
+visible = false
 layout_mode = 0
 offset_top = 23.0
 offset_right = 40.0
 offset_bottom = 46.0
 text = "Name"
-metadata/_edit_use_anchors_ = true
 
 [node name="Con_menu" type="PanelContainer" parent="."]
 visible = false

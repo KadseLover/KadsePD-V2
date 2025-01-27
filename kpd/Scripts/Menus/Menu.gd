@@ -7,9 +7,6 @@ extends PanelContainer
 @onready var menu_name: Label = $"../LabelDings/Menu Name"
 @onready var label_dings: PanelContainer = $"../LabelDings"
 
-func _process(delta: float) -> void:
-	pass
-
 func _on_production_pressed() -> void:
 	production.show()
 	main.hide()

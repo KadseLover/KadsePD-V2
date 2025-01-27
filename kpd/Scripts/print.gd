@@ -1,8 +1,11 @@
 extends Node2D
 
-@onready var fps: Label = $CanvasLayer/fps
+@onready var fps: Label = $CanvasLayer/Labels/fps
+@onready var name_: Label = $CanvasLayer/Labels/name
 @onready var del_ramen: TextureRect = $CanvasLayer/del_ramen
 @onready var Con_menu: PanelContainer = $Con_menu
+@onready var coords: Label = $CanvasLayer/Labels/Coords
+@onready var labels: Control = $CanvasLayer/Labels
 var PIPE = preload("res://Scenes/pipe.tscn")
 var CONSTRUCTOR = preload("res://Scenes/Buildings/constructor.tscn")
 var FOUNDRY = preload("res://Scenes/Buildings/foundry.tscn")
@@ -14,18 +17,18 @@ var TEXT = preload("res://Scenes/text.tscn")
 func _ready() -> void:
 	Global.connect("light_cancel_belt", belt_cancel)
 	Global.connect("light_cancel_pipe", pipe_cancel)
-	fps.hide()
-	Con_menu.hide()
+	name_.text = "Name: " + str(Global.print_name)
 	
 
 func _process(delta: float) -> void:
 	fps.set_text("FPS: %d" % Engine.get_frames_per_second())
+	coords.text = "Coords: " + str(Global.build_coords)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("show fps"):
-		fps.show()
+		labels.show()
 	if Input.is_action_just_pressed("hide_fps"):
-		fps.hide()
+		labels.hide()
 	
 	if Global.in_menu:
 		return
@@ -110,7 +113,7 @@ func spawn_splitter():
 	new_splitter.position = get_global_mouse_position()
 	add_child(new_splitter)
 
-
+#Buttons
 
 func _on_constructor_pressed() -> void:
 	spawn_constructor()

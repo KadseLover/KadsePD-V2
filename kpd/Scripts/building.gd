@@ -6,6 +6,7 @@ var spawnt
 var offset_
 var id
 var selectet
+var in_selection_box
 @onready var Overlay: ColorRect = $Overlay
 
 
@@ -29,7 +30,7 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("RMB") and mouse_in:
 		selectet = true
-		modulate = Color.GRAY
+		modulate = Color.DIM_GRAY
 	
 	if Input.is_action_just_pressed("LMB") and !mouse_in and !Global.con_menu_mouse and !Global.in_menu:
 		selectet = false
@@ -52,7 +53,10 @@ func _process(delta: float) -> void:
 		Overlay.color = Color.hex(0x7000005f)
 	else:
 		Overlay.color = Color.hex(0x53ffff5f)
-
+	
+	if mouse_in:
+		Global.build_coords = position
+	
 func _on_mouse_entered() -> void:
 	mouse_in = true
 	Global.building_focus = true
@@ -63,6 +67,7 @@ func _on_mouse_exited() -> void:
 	mouse_in = false
 	Global.building_focus = false
 	Overlay.hide()
+	Global.build_coords = "(-, -)"
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -83,3 +88,14 @@ func index():
 func update_color():
 	if selectet:
 		self_modulate = Global.new_color
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	selectet = true
+	modulate = Color.DIM_GRAY
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if !Global.AABB_:
+		selectet = true
+	else:
+		selectet = false
+		modulate = Color.WHITE
