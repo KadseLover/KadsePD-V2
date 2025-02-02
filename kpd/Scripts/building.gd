@@ -7,7 +7,10 @@ var offset_
 var id
 var selectet
 var in_selection_box
+signal rotate_me
+var rotate_count = 1
 @onready var Overlay: ColorRect = $Overlay
+
 
 
 func _ready() -> void:
@@ -15,6 +18,7 @@ func _ready() -> void:
 	Overlay.hide()
 	index()
 	Global.connect("change_color", update_color)
+	connect("rotate_me", rotate_build)
 
 func _input(event: InputEvent) -> void:
 	if Global.in_menu:
@@ -35,8 +39,12 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("LMB") and !mouse_in and !Global.con_menu_mouse and !Global.in_menu:
 		selectet = false
 		modulate = Color.WHITE
-
 	
+	if Input.is_action_just_pressed("Rotate") and mouse_in:
+		emit_signal("rotate_me")
+	
+
+
 
 func _process(delta: float) -> void:
 	if spawnt:
@@ -56,6 +64,7 @@ func _process(delta: float) -> void:
 	
 	if mouse_in:
 		Global.build_coords = position
+	
 	
 func _on_mouse_entered() -> void:
 	mouse_in = true
@@ -99,3 +108,6 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	else:
 		selectet = false
 		modulate = Color.WHITE
+
+func rotate_build():
+	self.rotate(deg_to_rad(90))
