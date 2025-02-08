@@ -5,7 +5,7 @@ var dragging
 var spawnt
 var offset_
 var id
-var selectet
+var selectet = false
 var in_selection_box
 signal rotate_me
 var rotate_count = 1
@@ -53,7 +53,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	group_move()
+	move_build()
 	offset_ = position - Global.g_tile_pos
 	if spawnt:
 		if Global.id == 1:
@@ -62,8 +62,6 @@ func _process(delta: float) -> void:
 			position = Global.g_tile_pos
 		if Input.is_action_just_pressed("LMB"):
 			spawnt = false
-	if dragging:
-		position = Global.g_tile_pos + offset_
 		
 	if mouse_in and Global.delete_mode:
 		Overlay.color = Color.hex(0x7000005f)
@@ -72,8 +70,13 @@ func _process(delta: float) -> void:
 	
 	if mouse_in:
 		Global.build_coords = position
-	
-	
+
+func move_build():
+	if Global.one_build_dragged and Global.selectet_arr.has(self):
+		self.position = Global.g_tile_pos + offset_
+	if dragging:
+		position = Global.g_tile_pos + offset_
+
 func _on_mouse_entered() -> void:
 	mouse_in = true
 	Global.building_focus = true
@@ -130,7 +133,3 @@ func append_select_list():
 func erase_select_list():
 	if Input.is_action_pressed("LMB"):
 		Global.selectet_arr.erase(self)
-
-func group_move():
-	if Global.one_build_dragged and Global.selectet_arr.has(self):
-		self.position = Global.g_tile_pos + offset_

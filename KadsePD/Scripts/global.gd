@@ -22,6 +22,7 @@ var build_coords
 var selectet_arr = []
 var one_build_dragged
 
+
 signal light_cancel_belt
 signal light_cancel_pipe
 signal change_text
