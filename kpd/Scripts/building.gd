@@ -26,27 +26,35 @@ func _input(event: InputEvent) -> void:
 	#Check ob auf dem Building Mouse Input is
 	if Input.is_action_just_pressed("LMB") and mouse_in:
 		dragging = true
+		Global.one_build_dragged = true
 		top_level = true
-		offset_ = position - Global.g_tile_pos
+		
 	if !Input.is_action_pressed("LMB"):
 		top_level = false
 		dragging = false
+		Global.one_build_dragged = false
 	
 	if Input.is_action_just_pressed("RMB") and mouse_in:
 		selectet = true
 		modulate = Color.DIM_GRAY
 	
-	if Input.is_action_just_pressed("LMB") and !mouse_in and !Global.con_menu_mouse and !Global.in_menu:
+	if Input.is_action_just_pressed("LMB") and !Global.building_focus and !Global.con_menu_mouse and !Global.in_menu:
 		selectet = false
 		modulate = Color.WHITE
+		Global.selectet_arr.erase(self)
 	
 	if Input.is_action_just_pressed("Rotate") and mouse_in:
 		emit_signal("rotate_me")
 	
+	if Input.is_action_just_pressed("del_group"):
+		if selectet:
+			queue_free()
 
 
 
 func _process(delta: float) -> void:
+	group_move()
+	offset_ = position - Global.g_tile_pos
 	if spawnt:
 		if Global.id == 1:
 			position = Global.g_tile_pos + Vector2(0, 17)
@@ -56,7 +64,7 @@ func _process(delta: float) -> void:
 			spawnt = false
 	if dragging:
 		position = Global.g_tile_pos + offset_
-	
+		
 	if mouse_in and Global.delete_mode:
 		Overlay.color = Color.hex(0x7000005f)
 	else:
@@ -81,6 +89,7 @@ func _on_mouse_exited() -> void:
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Global.delete_mode and Input.is_action_just_pressed("LMB"):
+		Global.building_focus = false
 		queue_free()
 
 func index():
@@ -99,10 +108,12 @@ func update_color():
 		self_modulate = Global.new_color
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	append_select_list()
 	selectet = true
 	modulate = Color.DIM_GRAY
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
+	erase_select_list()
 	if !Global.AABB_:
 		selectet = true
 	else:
@@ -111,3 +122,15 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func rotate_build():
 	self.rotate(deg_to_rad(90))
+
+func append_select_list():
+	if !Global.selectet_arr.has(self):
+		Global.selectet_arr.append(self)
+
+func erase_select_list():
+	if Input.is_action_pressed("LMB"):
+		Global.selectet_arr.erase(self)
+
+func group_move():
+	if Global.one_build_dragged and Global.selectet_arr.has(self):
+		self.position = Global.g_tile_pos + offset_
