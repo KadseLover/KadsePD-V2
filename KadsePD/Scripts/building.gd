@@ -7,8 +7,6 @@ var offset_
 var id
 var selectet = false
 var in_selection_box
-signal rotate_me
-var rotate_count = 1
 @onready var Overlay: ColorRect = $Overlay
 
 
@@ -18,7 +16,7 @@ func _ready() -> void:
 	Overlay.hide()
 	index()
 	Global.connect("change_color", update_color)
-	connect("rotate_me", rotate_build)
+	Global.connect("build_rotate", rotate_build_global)
 
 func _input(event: InputEvent) -> void:
 	if Global.in_menu:
@@ -44,13 +42,12 @@ func _input(event: InputEvent) -> void:
 		Global.selectet_arr.erase(self)
 	
 	if Input.is_action_just_pressed("Rotate") and mouse_in:
-		emit_signal("rotate_me")
+		rotate_local()
+		Global.emit_signal("build_rotate")
 	
 	if Input.is_action_just_pressed("del_group"):
 		if selectet:
 			queue_free()
-
-
 
 func _process(delta: float) -> void:
 	move_build()
@@ -76,6 +73,13 @@ func move_build():
 		self.position = Global.g_tile_pos + offset_
 	if dragging:
 		position = Global.g_tile_pos + offset_
+
+func rotate_build_global():
+	if Global.selectet_arr.has(self):
+		rotate(deg_to_rad(90))
+
+func rotate_local():
+	self.rotate(deg_to_rad(90))
 
 func _on_mouse_entered() -> void:
 	mouse_in = true
@@ -122,9 +126,6 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	else:
 		selectet = false
 		modulate = Color.WHITE
-
-func rotate_build():
-	self.rotate(deg_to_rad(90))
 
 func append_select_list():
 	if !Global.selectet_arr.has(self):

@@ -28,3 +28,4 @@ signal light_cancel_pipe
 signal change_text
 signal change_color
 signal AABB_hiden
+signal build_rotate
