@@ -23,7 +23,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if Global.in_menu:
 		return
-	#Check ob auf dem Building Mouse Input is
+
 	if Input.is_action_just_pressed("LMB") and mouse_in:
 		dragging = true
 		Global.one_build_dragged = true

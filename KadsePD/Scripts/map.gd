@@ -3,8 +3,6 @@ extends TileMapLayer
 
 var local_pos
 var pos = Vector2i()
-var height = 1000
-var breite = 1000
 
 func _ready() -> void:
 	fill()
