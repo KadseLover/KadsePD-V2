@@ -23,6 +23,10 @@ Global="*res://Scripts/global.gd"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
+[global_group]
+
+Selectet="Selectet Buildings"
+
 [input]
 
 LMB={

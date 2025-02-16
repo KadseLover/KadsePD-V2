@@ -19,7 +19,6 @@ var selection_visible
 var print_size
 var print_name
 var build_coords
-var selectet_arr = []
 var one_build_dragged
 
 
@@ -28,4 +27,3 @@ signal light_cancel_pipe
 signal change_text
 signal change_color
 signal AABB_hiden
-signal build_rotate

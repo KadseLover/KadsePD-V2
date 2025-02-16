@@ -16,7 +16,6 @@ func _ready() -> void:
 	Overlay.hide()
 	index()
 	Global.connect("change_color", update_color)
-	Global.connect("build_rotate", rotate_build_global)
 
 func _input(event: InputEvent) -> void:
 	if Global.in_menu:
@@ -39,11 +38,10 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("LMB") and !Global.building_focus and !Global.con_menu_mouse and !Global.in_menu:
 		selectet = false
 		modulate = Color.WHITE
-		Global.selectet_arr.erase(self)
+		remove_from_group("Selectet")
 	
 	if Input.is_action_just_pressed("Rotate") and mouse_in:
 		rotate_local()
-		Global.emit_signal("build_rotate")
 	
 	if Input.is_action_just_pressed("del_group"):
 		if selectet:
@@ -69,14 +67,11 @@ func _process(delta: float) -> void:
 		Global.build_coords = position
 
 func move_build():
-	if Global.one_build_dragged and Global.selectet_arr.has(self):
+	if Global.one_build_dragged and get_tree().get_nodes_in_group("Selectet").has(self):
 		self.position = Global.g_tile_pos + offset_
 	if dragging:
 		position = Global.g_tile_pos + offset_
 
-func rotate_build_global():
-	if Global.selectet_arr.has(self):
-		rotate(deg_to_rad(90))
 
 func rotate_local():
 	self.rotate(deg_to_rad(90))
@@ -128,9 +123,9 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 		modulate = Color.WHITE
 
 func append_select_list():
-	if !Global.selectet_arr.has(self):
-		Global.selectet_arr.append(self)
+	if !get_tree().get_nodes_in_group("Selectet").has(self):
+		add_to_group("Selectet")
 
 func erase_select_list():
 	if Input.is_action_pressed("LMB"):
-		Global.selectet_arr.erase(self)
+		remove_from_group("Selectet")
