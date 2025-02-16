@@ -10,6 +10,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [node name="Belt" type="Line2D"]
+z_as_relative = false
 points = PackedVector2Array(0, 0)
 width = 30.0
 default_color = Color(0.145098, 0.145098, 0.145098, 1)
@@ -17,6 +18,7 @@ joint_mode = 2
 script = ExtResource("1_e8c3u")
 
 [node name="Panel" type="Panel" parent="."]
+z_as_relative = false
 offset_left = -15.0
 offset_top = -15.0
 offset_right = 15.0
@@ -25,6 +27,9 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5rijh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_as_relative = false
+collision_layer = 2
+collision_mask = 0
 input_pickable = true
 
 [connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event"]
