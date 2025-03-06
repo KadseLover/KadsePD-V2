@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1l0yc27p1bfx"]
 
 [ext_resource type="Texture2D" uid="uid://by0qe6r51reji" path="res://Assets/Buildings/Foundry.png" id="1_1erwk"]
-[ext_resource type="Script" path="res://Scripts/building.gd" id="2_p3a25"]
+[ext_resource type="Script" uid="uid://sdijy2o8siy0" path="res://Scripts/building.gd" id="2_p3a25"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2y1c"]
 size = Vector2(679, 792.167)

@@ -14,6 +14,7 @@ var mouse_in
 func _ready() -> void:
 	Global.can_get_back = true
 	Global.can_drag = false
+	Global.laying = true
 	panel.show()
 	spawnt = true
 	cancelt = false

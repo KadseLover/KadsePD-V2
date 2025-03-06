@@ -6,6 +6,7 @@ extends Node2D
 @onready var Con_menu: PanelContainer = $Con_menu
 @onready var coords: Label = $CanvasLayer/Labels/Coords
 @onready var labels: Control = $CanvasLayer/Labels
+@onready var pause_menu: Control = $CanvasLayer/Pause_menu
 var PIPE = preload("res://Scenes/pipe.tscn")
 var CONSTRUCTOR = preload("res://Scenes/Buildings/constructor.tscn")
 var FOUNDRY = preload("res://Scenes/Buildings/foundry.tscn")
@@ -29,6 +30,10 @@ func _input(event: InputEvent) -> void:
 		labels.show()
 	if Input.is_action_just_pressed("hide_fps"):
 		labels.hide()
+	
+	if Input.is_action_just_pressed("Cancel") and !Global.laying:
+		pause_menu.show()
+		Global.in_menu = true
 	
 	if Global.in_menu:
 		return

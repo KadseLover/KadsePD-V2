@@ -30,8 +30,9 @@ func _on_change_text_pressed() -> void:
 	Global.in_menu = true
 
 func _on_color_pressed() -> void:
-	color_edit.show()
 	Global.in_menu = true
+	print("bro was")
+	color_edit.show()
 
 func _on_mouse_exited() -> void:
 	mouse_in = false
