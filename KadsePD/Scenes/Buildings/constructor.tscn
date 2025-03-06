@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnrv4rjx31kjn"]
 
 [ext_resource type="Texture2D" uid="uid://b65in1fh35pch" path="res://Assets/Buildings/Constructor.png" id="1_sj4ak"]
-[ext_resource type="Script" path="res://Scripts/building.gd" id="2_u1thx"]
+[ext_resource type="Script" uid="uid://sdijy2o8siy0" path="res://Scripts/building.gd" id="2_u1thx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xanw3"]
 size = Vector2(593.917, 824.908)

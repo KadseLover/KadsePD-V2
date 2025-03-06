@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccwqmp46jhl1d"]
 
 [ext_resource type="Texture2D" uid="uid://dy56m2cwh6bj2" path="res://Assets/Buildings/Smelter.png" id="1_kp1qt"]
-[ext_resource type="Script" path="res://Scripts/building.gd" id="2_yrmxo"]
+[ext_resource type="Script" uid="uid://sdijy2o8siy0" path="res://Scripts/building.gd" id="2_yrmxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2gh2"]
 size = Vector2(251.066, 503.694)

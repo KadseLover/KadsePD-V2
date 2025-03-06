@@ -33,6 +33,7 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("Cancel") and !Global.laying:
 		pause_menu.show()
+		Global.in_menu = true
 	
 	if Global.in_menu:
 		return
