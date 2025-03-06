@@ -9,5 +9,5 @@ Plan and Organise your Factories like you need them.
 
 
 <h3>Installation:</h3>
-<p>KadsePD has not yet released, so to try it you need Godot in the latest version (version 4.4) and import KadsePD as a Project.</p>
-<p><b>Then you just press play!</b></p>
+<p>KadsePD has not yet released, so to try it you need to download the ZIP by clicking on "Code" and download Godot in the latest version (version 4.4) to import KadsePD as a Project.</p>
+<p><b>Then you press play</b></p>
