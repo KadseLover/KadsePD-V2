@@ -24,7 +24,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_f46bq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1eo0p")
-text = "Test Text"
+text = "Text..."
 script = ExtResource("2_cmlvo")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

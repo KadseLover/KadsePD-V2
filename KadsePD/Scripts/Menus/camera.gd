@@ -6,7 +6,7 @@ var dragging = false
 var Cam_y
 var Cam_x
 var zoom_scale = 1
-var Speed = 100
+var Speed = 2
 var _zoom = 1
 var zoom_str = 0.1
 

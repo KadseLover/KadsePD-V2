@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bmafffcarojsq"]
+[gd_scene load_steps=25 format=3 uid="uid://bmafffcarojsq"]
 
 [ext_resource type="Script" uid="uid://3mf7yjlpxu08" path="res://Scripts/print.gd" id="1_t1psh"]
 [ext_resource type="Texture2D" uid="uid://c1a07canohjxf" path="res://Assets/Anderes/Sub-Found.png" id="1_v27ud"]
 [ext_resource type="Script" uid="uid://b5p2v4fw0qjq7" path="res://Scripts/map.gd" id="2_pmsod"]
+[ext_resource type="Texture2D" uid="uid://buwbh0dqq4xxx" path="res://Assets/Anderes/found.png" id="4_junip"]
 [ext_resource type="Script" uid="uid://c122w7d4xisi5" path="res://Scripts/Menus/camera.gd" id="4_shos3"]
 [ext_resource type="Theme" uid="uid://dj32msjjeg33q" path="res://Assets/Anderes/Theme.tres" id="4_yi8w6"]
 [ext_resource type="Script" uid="uid://2a54sh44b0ah" path="res://Scripts/Menus/Menu.gd" id="6_g75uk"]
@@ -10,6 +11,7 @@
 [ext_resource type="Script" uid="uid://i37v8cbml1h1" path="res://Scripts/Menus/con_menu.gd" id="8_eao22"]
 [ext_resource type="Script" uid="uid://bhvvdqk0s2vwp" path="res://Scripts/Menus/pause_menu.gd" id="8_r72kp"]
 [ext_resource type="PackedScene" uid="uid://bxnhbjarxmvbb" path="res://Scenes/selection.tscn" id="9_72i4s"]
+[ext_resource type="Script" uid="uid://ms3di4pk630c" path="res://Scripts/Menus/save_manager.gd" id="12_me6xb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4i4w"]
 texture = ExtResource("1_v27ud")
@@ -45,11 +47,14 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_1vblq"]
 events = [SubResource("InputEventKey_qslbn")]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btlrc"]
-bg_color = Color(0.0923971, 0.0923971, 0.092397, 0.690196)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io277"]
 bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_junip"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erva7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Print" type="Node2D"]
 script = ExtResource("1_t1psh")
@@ -58,6 +63,13 @@ script = ExtResource("1_t1psh")
 z_index = -1
 tile_set = SubResource("TileSet_kjn6e")
 script = ExtResource("2_pmsod")
+
+[node name="found_div" type="TextureRect" parent="TileMapLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_junip")
+stretch_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("4_shos3")
@@ -331,77 +343,210 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_btlrc")
+theme = ExtResource("4_yi8w6")
 
 [node name="Box" type="Panel" parent="CanvasLayer/Pause_menu/Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 449.0
-offset_top = 227.0
-offset_right = -449.0
-offset_bottom = -227.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_io277")
-
-[node name="Continue" type="Button" parent="CanvasLayer/Pause_menu/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -64.0
-offset_right = 59.0
-offset_bottom = -32.0
+offset_left = -138.0
+offset_top = -101.0
+offset_right = 145.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_io277")
+
+[node name="Continue" type="Button" parent="CanvasLayer/Pause_menu/Background/Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -88.0
+offset_right = 54.5
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_yi8w6")
 text = "Continue"
 
-[node name="Save" type="Button" parent="CanvasLayer/Pause_menu/Background"]
+[node name="Save" type="Button" parent="CanvasLayer/Pause_menu/Background/Box"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -16.0
-offset_right = 59.0
-offset_bottom = 16.0
+offset_left = -137.5
+offset_top = 65.0
+offset_right = -19.5
+offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_yi8w6")
 text = "Save"
 
-[node name="Exit" type="Button" parent="CanvasLayer/Pause_menu/Background"]
+[node name="load" type="Button" parent="CanvasLayer/Pause_menu/Background/Box"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = 33.0
-offset_right = 59.0
-offset_bottom = 65.0
+offset_left = 15.5
+offset_top = 65.0
+offset_right = 133.5
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_yi8w6")
+text = "Load"
+
+[node name="options" type="Button" parent="CanvasLayer/Pause_menu/Background/Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -40.0
+offset_right = 54.5
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_yi8w6")
+text = "Options"
+
+[node name="Exit" type="Button" parent="CanvasLayer/Pause_menu/Background/Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = 9.0
+offset_right = 54.5
+offset_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_yi8w6")
 text = "Exit"
 
-[node name="Notes" type="TextEdit" parent="CanvasLayer/Pause_menu/Background"]
+[node name="Notes" type="TextEdit" parent="CanvasLayer/Pause_menu/Background/Box"]
 layout_mode = 0
-offset_left = 787.0
-offset_top = 227.0
-offset_right = 1063.0
-offset_bottom = 421.0
+offset_left = 349.0
+offset_top = 4.0
+offset_right = 625.0
+offset_bottom = 198.0
 theme = ExtResource("4_yi8w6")
 placeholder_text = "Notes..."
+
+[node name="TabBar" type="TabBar" parent="CanvasLayer/Pause_menu/Background"]
+visible = false
+layout_mode = 0
+offset_left = 248.0
+offset_top = 29.0
+offset_right = 904.0
+offset_bottom = 69.0
+current_tab = 0
+tab_alignment = 1
+deselect_enabled = true
+tab_count = 2
+tab_0/title = "Input"
+tab_1/title = "fdgbgfdg"
+
+[node name="Finish" type="Button" parent="CanvasLayer/Pause_menu/Background/TabBar"]
+layout_mode = 0
+offset_top = 495.0
+offset_right = 85.0
+offset_bottom = 527.0
+text = "Finish"
+
+[node name="Cancel" type="Button" parent="CanvasLayer/Pause_menu/Background/TabBar"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 495.0
+offset_right = 203.0
+offset_bottom = 527.0
+text = "Cancel"
+
+[node name="input_opt" type="Panel" parent="CanvasLayer/Pause_menu/Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 248.0
+offset_top = 72.0
+offset_right = -248.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_yi8w6")
+
+[node name="Constructor" type="Label" parent="CanvasLayer/Pause_menu/Background/input_opt"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 48.0
+offset_right = 311.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_junip")
+text = "Constructor"
+horizontal_alignment = 1
+
+[node name="Const_input" type="Label" parent="CanvasLayer/Pause_menu/Background/input_opt"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 48.0
+offset_right = 450.562
+offset_bottom = 79.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_erva7")
+text = "c"
+horizontal_alignment = 1
+
+[node name="Smelter" type="Label" parent="CanvasLayer/Pause_menu/Background/input_opt"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 100.0
+offset_right = 311.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_junip")
+text = "Smelter"
+horizontal_alignment = 1
+
+[node name="Smelter_input" type="Label" parent="CanvasLayer/Pause_menu/Background/input_opt"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 100.0
+offset_right = 450.562
+offset_bottom = 131.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_erva7")
+text = "s"
+horizontal_alignment = 1
+
+[node name="andere_opt" type="Panel" parent="CanvasLayer/Pause_menu/Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 248.0
+offset_top = 70.0
+offset_right = -248.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_yi8w6")
 
 [node name="Con_menu" type="PanelContainer" parent="."]
 visible = false
@@ -430,6 +575,9 @@ text = "Change Color"
 
 [node name="Selection" parent="." instance=ExtResource("9_72i4s")]
 
+[node name="save_manager" type="Node" parent="."]
+script = ExtResource("12_me6xb")
+
 [connection signal="pressed" from="CanvasLayer/Container/Main/Back_men" to="CanvasLayer/Container" method="_on_back_men_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Main/Production" to="CanvasLayer/Container" method="_on_production_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Main/Logistic" to="CanvasLayer/Container" method="_on_logistic_pressed"]
@@ -445,8 +593,12 @@ text = "Change Color"
 [connection signal="pressed" from="CanvasLayer/Menu" to="CanvasLayer/Container" method="_on_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Ediors/TextEditor/Finsh_text" to="Con_menu" method="_on_finsh_text_pressed"]
 [connection signal="pressed" from="CanvasLayer/Ediors/ColorEdit/Finsh_color" to="Con_menu" method="_on_finsh_color_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Continue" to="CanvasLayer/Pause_menu" method="_on_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Exit" to="CanvasLayer/Pause_menu" method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/Continue" to="CanvasLayer/Pause_menu" method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/options" to="CanvasLayer/Pause_menu" method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/Exit" to="CanvasLayer/Pause_menu" method="_on_exit_pressed"]
+[connection signal="tab_changed" from="CanvasLayer/Pause_menu/Background/TabBar" to="CanvasLayer/Pause_menu" method="_on_tab_bar_tab_changed"]
+[connection signal="pressed" from="CanvasLayer/Pause_menu/Background/TabBar/Finish" to="CanvasLayer/Pause_menu" method="_on_finish_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause_menu/Background/TabBar/Cancel" to="CanvasLayer/Pause_menu" method="_on_cancel_pressed"]
 [connection signal="draw" from="Con_menu" to="Con_menu" method="_on_draw"]
 [connection signal="mouse_entered" from="Con_menu" to="Con_menu" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Con_menu" to="Con_menu" method="_on_mouse_exited"]

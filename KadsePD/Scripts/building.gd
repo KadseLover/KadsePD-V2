@@ -72,7 +72,6 @@ func move_build():
 	if dragging:
 		position = Global.g_tile_pos + offset_
 
-
 func rotate_local():
 	self.rotate(deg_to_rad(90))
 
@@ -129,3 +128,7 @@ func append_select_list():
 func erase_select_list():
 	if Input.is_action_pressed("LMB"):
 		remove_from_group("Selectet")
+
+
+func loot_data():
+	

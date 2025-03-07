@@ -34,6 +34,9 @@ func _process(delta: float) -> void:
 			spawnt = false
 	if dragging:
 		position = get_global_mouse_position() + offset_
+		
+	if Global.delete_mode and mouse_in:
+		modulate = Color.FIREBRICK
 	
 	
 
@@ -43,11 +46,13 @@ func update():
 
 func _on_mouse_entered() -> void:
 	mouse_in = true
+	modulate = Color.GRAY
 	Global.text_focus = true
 
 
 func _on_mouse_exited() -> void:
 	mouse_in = false
+	modulate = Color.WHITE
 	Global.text_focus = false
 
 

@@ -31,7 +31,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("hide_fps"):
 		labels.hide()
 	
-	if Input.is_action_just_pressed("Cancel") and !Global.laying:
+	if Input.is_action_just_pressed("Cancel"):
 		pause_menu.show()
 		Global.in_menu = true
 	
