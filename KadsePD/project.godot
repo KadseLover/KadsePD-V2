@@ -21,7 +21,7 @@ Global="*res://Scripts/global.gd"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="ignore"
+window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [global_group]

@@ -128,7 +128,3 @@ func append_select_list():
 func erase_select_list():
 	if Input.is_action_pressed("LMB"):
 		remove_from_group("Selectet")
-
-
-func loot_data():
-	

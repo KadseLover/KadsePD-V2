@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bmafffcarojsq"]
+[gd_scene load_steps=29 format=3 uid="uid://bmafffcarojsq"]
 
 [ext_resource type="Script" uid="uid://3mf7yjlpxu08" path="res://Scripts/print.gd" id="1_t1psh"]
 [ext_resource type="Texture2D" uid="uid://c1a07canohjxf" path="res://Assets/Anderes/Sub-Found.png" id="1_v27ud"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://c122w7d4xisi5" path="res://Scripts/Menus/camera.gd" id="4_shos3"]
 [ext_resource type="Theme" uid="uid://dj32msjjeg33q" path="res://Assets/Anderes/Theme.tres" id="4_yi8w6"]
 [ext_resource type="Script" uid="uid://2a54sh44b0ah" path="res://Scripts/Menus/Menu.gd" id="6_g75uk"]
-[ext_resource type="Texture2D" uid="uid://wwiydl0vwgb7" path="res://Assets/Anderes/Ramen.png" id="7_c5o0u"]
 [ext_resource type="Script" uid="uid://i37v8cbml1h1" path="res://Scripts/Menus/con_menu.gd" id="8_eao22"]
 [ext_resource type="Script" uid="uid://bhvvdqk0s2vwp" path="res://Scripts/Menus/pause_menu.gd" id="8_r72kp"]
 [ext_resource type="PackedScene" uid="uid://bxnhbjarxmvbb" path="res://Scenes/selection.tscn" id="9_72i4s"]
@@ -56,6 +55,78 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erva7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="Animation" id="Animation_junip"]
+resource_name = "Color_change"
+length = 3.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.9, 1.96667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.458824), Color(1, 0, 0, 0.286275), Color(1, 0, 0, 0.458824), Color(1, 0, 0, 0.286275)]
+}
+
+[sub_resource type="Animation" id="Animation_me6xb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i0vk8"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.458824)]
+}
+
+[sub_resource type="Animation" id="Animation_iykep"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.458824), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0vk8"]
+_data = {
+&"Color_change": SubResource("Animation_junip"),
+&"RESET": SubResource("Animation_me6xb"),
+&"fade_in": SubResource("Animation_i0vk8"),
+&"fade_out": SubResource("Animation_iykep")
+}
+
 [node name="Print" type="Node2D"]
 script = ExtResource("1_t1psh")
 
@@ -78,9 +149,9 @@ script = ExtResource("4_shos3")
 
 [node name="LabelDings" type="PanelContainer" parent="CanvasLayer"]
 visible = false
-offset_top = 503.0
+offset_top = 411.0
 offset_right = 113.0
-offset_bottom = 535.0
+offset_bottom = 443.0
 theme = ExtResource("4_yi8w6")
 
 [node name="Menu Name" type="Label" parent="CanvasLayer/LabelDings"]
@@ -92,15 +163,13 @@ text = "Main Menu"
 
 [node name="Container" type="PanelContainer" parent="CanvasLayer"]
 visible = false
-offset_top = 535.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 196.0
+offset_bottom = 411.0
 theme = ExtResource("4_yi8w6")
 script = ExtResource("6_g75uk")
 
 [node name="Main" type="GridContainer" parent="CanvasLayer/Container"]
 layout_mode = 2
-columns = 8
 
 [node name="Back_men" type="Button" parent="CanvasLayer/Container/Main"]
 layout_mode = 2
@@ -127,7 +196,6 @@ text = "Text"
 [node name="Production" type="GridContainer" parent="CanvasLayer/Container"]
 visible = false
 layout_mode = 2
-columns = 8
 
 [node name="Back" type="Button" parent="CanvasLayer/Container/Production"]
 layout_mode = 2
@@ -154,7 +222,6 @@ text = "Foundry"
 [node name="Logistic" type="GridContainer" parent="CanvasLayer/Container"]
 visible = false
 layout_mode = 2
-columns = 8
 
 [node name="Back_log" type="Button" parent="CanvasLayer/Container/Logistic"]
 layout_mode = 2
@@ -185,22 +252,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -576.0
-offset_top = 292.0
+offset_top = -324.0
 offset_right = -483.0
-offset_bottom = 324.0
+offset_bottom = -292.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_yi8w6")
 shortcut_in_tooltip = false
 text = "Menu"
-
-[node name="del_ramen" type="TextureRect" parent="CanvasLayer"]
-visible = false
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
-texture = ExtResource("7_c5o0u")
-expand_mode = 1
 
 [node name="Ediors" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -547,6 +606,17 @@ offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_yi8w6")
+
+[node name="del_ramen" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="Animation_delete" type="AnimationPlayer" parent="CanvasLayer/del_ramen"]
+libraries = {
+&"": SubResource("AnimationLibrary_i0vk8")
+}
 
 [node name="Con_menu" type="PanelContainer" parent="."]
 visible = false
