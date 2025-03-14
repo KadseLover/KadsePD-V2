@@ -8,6 +8,11 @@ var pos = Vector2i()
 
 func _ready() -> void:
 	fill()
+<<<<<<< Updated upstream
+=======
+	Global.cam_start_pos = Vector2i(Global.print_size * tile_size / 2, Global.print_size * tile_size / 2)
+	Global.emit_signal("cam_start_pos_finished")
+>>>>>>> Stashed changes
 	found_div.show()
 	found_div.position = get_used_rect().position
 	found_div.size = get_used_rect().size * tile_size
