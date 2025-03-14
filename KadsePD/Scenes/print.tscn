@@ -163,7 +163,7 @@ text = "Main Menu"
 
 [node name="Container" type="PanelContainer" parent="CanvasLayer"]
 visible = false
-offset_right = 196.0
+offset_right = 163.0
 offset_bottom = 411.0
 theme = ExtResource("4_yi8w6")
 script = ExtResource("6_g75uk")
@@ -177,6 +177,9 @@ size_flags_horizontal = 3
 shortcut = SubResource("Shortcut_rxux2")
 shortcut_in_tooltip = false
 text = "Back"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Container/Main"]
+layout_mode = 2
 
 [node name="Production" type="Button" parent="CanvasLayer/Container/Main"]
 layout_mode = 2
@@ -193,6 +196,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Text"
 
+[node name="Color_mode" type="Button" parent="CanvasLayer/Container/Main"]
+layout_mode = 2
+text = "Color Mode"
+
 [node name="Production" type="GridContainer" parent="CanvasLayer/Container"]
 visible = false
 layout_mode = 2
@@ -203,6 +210,9 @@ size_flags_horizontal = 3
 shortcut = SubResource("Shortcut_p6qyl")
 shortcut_in_tooltip = false
 text = "Back"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Container/Production"]
+layout_mode = 2
 
 [node name="Constructor" type="Button" parent="CanvasLayer/Container/Production"]
 layout_mode = 2
@@ -230,6 +240,9 @@ shortcut = SubResource("Shortcut_1vblq")
 shortcut_in_tooltip = false
 text = "Back"
 
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Container/Logistic"]
+layout_mode = 2
+
 [node name="Belt" type="Button" parent="CanvasLayer/Container/Logistic"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -244,6 +257,26 @@ text = "Pipe"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Splitter"
+
+[node name="Color" type="GridContainer" parent="CanvasLayer/Container"]
+visible = false
+layout_mode = 2
+
+[node name="Back_col" type="Button" parent="CanvasLayer/Container/Color"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Container/Color"]
+layout_mode = 2
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="CanvasLayer/Container/Color"]
+layout_mode = 2
+theme = ExtResource("4_yi8w6")
+text = "
+
+"
+color = Color(1, 1, 1, 1)
 
 [node name="Menu" type="Button" parent="CanvasLayer"]
 anchors_preset = 8
@@ -359,6 +392,8 @@ text = "Finish"
 visible = false
 layout_mode = 3
 anchors_preset = 0
+offset_left = 982.0
+offset_right = 982.0
 metadata/_edit_use_anchors_ = true
 
 [node name="fps" type="Label" parent="CanvasLayer/Labels"]
@@ -618,6 +653,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_i0vk8")
 }
 
+[node name="Timer" type="Timer" parent="CanvasLayer/del_ramen"]
+wait_time = 0.3
+one_shot = true
+
 [node name="Con_menu" type="PanelContainer" parent="."]
 visible = false
 z_index = 2
@@ -652,6 +691,7 @@ script = ExtResource("12_me6xb")
 [connection signal="pressed" from="CanvasLayer/Container/Main/Production" to="CanvasLayer/Container" method="_on_production_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Main/Logistic" to="CanvasLayer/Container" method="_on_logistic_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Main/Text" to="." method="_on_text_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/Main/Color_mode" to="CanvasLayer/Container" method="_on_color_mode_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Production/Back" to="CanvasLayer/Container" method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Production/Constructor" to="." method="_on_constructor_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Production/Smelter" to="." method="_on_smelter_pressed"]
@@ -660,6 +700,7 @@ script = ExtResource("12_me6xb")
 [connection signal="pressed" from="CanvasLayer/Container/Logistic/Belt" to="." method="_on_belt_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Logistic/Pipe" to="." method="_on_pipe_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Logistic/Splitter" to="." method="_on_splitter_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/Color/Back_col" to="CanvasLayer/Container" method="_on_back_col_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu" to="CanvasLayer/Container" method="_on_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Ediors/TextEditor/Finsh_text" to="Con_menu" method="_on_finsh_text_pressed"]
 [connection signal="pressed" from="CanvasLayer/Ediors/ColorEdit/Finsh_color" to="Con_menu" method="_on_finsh_color_pressed"]
@@ -669,6 +710,7 @@ script = ExtResource("12_me6xb")
 [connection signal="tab_changed" from="CanvasLayer/Pause_menu/Background/TabBar" to="CanvasLayer/Pause_menu" method="_on_tab_bar_tab_changed"]
 [connection signal="pressed" from="CanvasLayer/Pause_menu/Background/TabBar/Finish" to="CanvasLayer/Pause_menu" method="_on_finish_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause_menu/Background/TabBar/Cancel" to="CanvasLayer/Pause_menu" method="_on_cancel_pressed"]
+[connection signal="timeout" from="CanvasLayer/del_ramen/Timer" to="." method="timer_delete"]
 [connection signal="draw" from="Con_menu" to="Con_menu" method="_on_draw"]
 [connection signal="mouse_entered" from="Con_menu" to="Con_menu" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Con_menu" to="Con_menu" method="_on_mouse_exited"]
