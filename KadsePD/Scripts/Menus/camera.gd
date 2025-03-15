@@ -6,11 +6,7 @@ var dragging = false
 var Cam_y
 var Cam_x
 var zoom_scale = 1
-<<<<<<< Updated upstream
-var Speed = 2
-=======
 var Speed = 20
->>>>>>> Stashed changes
 var _zoom = 1
 var zoom_str = 0.1
 

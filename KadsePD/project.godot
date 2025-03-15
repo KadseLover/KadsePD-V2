@@ -22,10 +22,6 @@ Global="*res://Scripts/global.gd"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-<<<<<<< Updated upstream
-window/vsync/vsync_mode=0
-=======
->>>>>>> Stashed changes
 
 [global_group]
 
