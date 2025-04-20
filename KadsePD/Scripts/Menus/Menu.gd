@@ -6,7 +6,6 @@ extends PanelContainer
 @onready var menu: Button = $"../Menu"
 @onready var menu_name: Label = $"../LabelDings/Menu Name"
 @onready var label_dings: PanelContainer = $"../LabelDings"
-@onready var color: GridContainer = $Color
 
 func _ready() -> void:
 	resize()
@@ -48,13 +47,3 @@ func resize():
 	var screen_size = DisplayServer.window_get_size()
 	#print(screen_size.x, " | ", screen_size.y)
 	menu.position = Vector2i(screen_size.x - screen_size.x, menu.size.y / screen_size.y)
-
-
-func _on_back_col_pressed() -> void:
-	color.hide()
-	main.show()
-
-
-func _on_color_mode_pressed() -> void:
-	main.hide()
-	color.show()
