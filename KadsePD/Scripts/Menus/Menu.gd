@@ -7,6 +7,10 @@ extends PanelContainer
 @onready var menu_name: Label = $"../LabelDings/Menu Name"
 @onready var label_dings: PanelContainer = $"../LabelDings"
 
+func _ready() -> void:
+	resize()
+	get_tree().root.size_changed.connect(resize) 
+
 func _on_production_pressed() -> void:
 	production.show()
 	main.hide()
@@ -39,6 +43,7 @@ func _on_back_men_pressed() -> void:
 	label_dings.hide()
 	menu.show()
 
-
-func _on_text_pressed() -> void:
-	pass # Replace with function body.
+func resize():
+	var screen_size = DisplayServer.window_get_size()
+	#print(screen_size.x, " | ", screen_size.y)
+	menu.position = Vector2i(screen_size.x - screen_size.x, menu.size.y / screen_size.y)

@@ -22,6 +22,7 @@ func _ready() -> void:
 	index()
 
 func _input(event: InputEvent) -> void:
+	# Add Colision Shapes to belt:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			panel.hide()
@@ -75,6 +76,7 @@ func _process(delta: float) -> void:
 			set_point_position(point, to_local(Global.g_tile_pos))
 		else:
 			set_point_position(point, get_point_position(last_point))
+
 
 
 

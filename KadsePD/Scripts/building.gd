@@ -71,7 +71,7 @@ func move_build():
 		self.position = Global.g_tile_pos + offset_
 	if dragging:
 		position = Global.g_tile_pos + offset_
-
+		Overlay.CURSOR_DRAG
 
 func rotate_local():
 	self.rotate(deg_to_rad(90))

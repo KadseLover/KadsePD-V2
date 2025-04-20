@@ -7,6 +7,7 @@ var leftdown
 var leftup
 var rightup
 var rightdown
+var shape_size = 20
 
 @onready var area: Area2D = $"../Area2D"
 @onready var shape: CollisionShape2D = $"../Area2D/CollisionShape2D"
@@ -54,7 +55,7 @@ func _process(delta: float) -> void:
 			#Right down
 			scale.y = 1
 		size = (get_global_mouse_position() - start) * scale
-		shape.scale = size / 20
+		shape.scale = size / shape_size
 		shape.position = calc_middle(start.x, end.x, start.y, end.y)
 
 func calc_middle(a_x, b_x, a_y, b_y):

@@ -2,11 +2,14 @@ extends Node2D
 
 @onready var fps: Label = $CanvasLayer/Labels/fps
 @onready var name_: Label = $CanvasLayer/Labels/name
-@onready var del_ramen: TextureRect = $CanvasLayer/del_ramen
 @onready var Con_menu: PanelContainer = $Con_menu
 @onready var coords: Label = $CanvasLayer/Labels/Coords
 @onready var labels: Control = $CanvasLayer/Labels
 @onready var pause_menu: Control = $CanvasLayer/Pause_menu
+@onready var del_ramen: ColorRect = $CanvasLayer/del_ramen
+@onready var camera: Camera2D = $Camera2D
+@onready var animation_delete: AnimationPlayer = $CanvasLayer/del_ramen/Animation_delete
+@onready var timer: Timer = $CanvasLayer/del_ramen/Timer
 var PIPE = preload("res://Scenes/pipe.tscn")
 var CONSTRUCTOR = preload("res://Scenes/Buildings/constructor.tscn")
 var FOUNDRY = preload("res://Scenes/Buildings/foundry.tscn")
@@ -16,10 +19,17 @@ var BELT = preload("res://Scenes/belt.tscn")
 var TEXT = preload("res://Scenes/text.tscn")
 
 func _ready() -> void:
+	del_ramen.show()
+	del_ramen.color = Color.hex(0xffffff00)
+	get_tree().root.size_changed.connect(resize) 
+	resize()
 	Global.connect("light_cancel_belt", belt_cancel)
 	Global.connect("light_cancel_pipe", pipe_cancel)
 	name_.text = "Name: " + str(Global.print_name)
-	
+
+func resize():
+	var screen_size = DisplayServer.window_get_size()
+	del_ramen.size = screen_size
 
 func _process(delta: float) -> void:
 	fps.set_text("FPS: %d" % Engine.get_frames_per_second())
@@ -31,7 +41,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("hide_fps"):
 		labels.hide()
 	
-	if Input.is_action_just_pressed("Cancel") and !Global.laying:
+	if Input.is_action_just_pressed("Cancel"):
 		pause_menu.show()
 		Global.in_menu = true
 	
@@ -43,11 +53,14 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("Delete"):
 		Global.delete_mode = true
-		del_ramen.show()
+		#del_ramen.show()
+		animation_delete.play("fade_in")
+		timer.start()
 	if Input.is_action_just_released("Delete"):
 		Global.delete_mode = false
-		del_ramen.hide()
-	
+		#del_ramen.hide()
+		animation_delete.stop()
+		animation_delete.play("fade_out")
 	if Input.is_action_just_pressed("RMB"):
 		Con_menu.hide()
 		Con_menu.show()
@@ -70,6 +83,9 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("Splitter"):
 		spawn_splitter()
+
+func timer_delete():
+	animation_delete.play("Color_change")
 
 func spawn_text():
 	var new_text = TEXT.instantiate()
