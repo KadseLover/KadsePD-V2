@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://lyhroo2a8ubl"]
+
+[ext_resource type="Script" uid="uid://sdijy2o8siy0" path="res://Scripts/building.gd" id="1_g1yg6"]
+[ext_resource type="Texture2D" uid="uid://g56b37e0hsjw" path="res://Assets/Anderes/Test_texture.png" id="1_mifkt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7o6p"]
+size = Vector2(50, 50)
+
+[node name="Node2D" type="Sprite2D"]
+position = Vector2(85, 170)
+scale = Vector2(3.4, 6.8)
+texture = ExtResource("1_mifkt")
+script = ExtResource("1_g1yg6")
+
+[node name="Overlay" type="ColorRect" parent="."]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+color = Color(0.32549, 1, 1, 0.372549)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-25, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_s7o6p")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]
