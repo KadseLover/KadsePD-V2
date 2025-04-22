@@ -20,11 +20,7 @@ var print_size
 var print_name
 var build_coords
 var one_build_dragged
-<<<<<<< Updated upstream
-var cam_start_pos : Vector2i
-=======
 var color_mode
->>>>>>> Stashed changes
 
 
 signal light_cancel_belt
@@ -32,4 +28,3 @@ signal light_cancel_pipe
 signal change_text
 signal change_color
 signal AABB_hiden
-signal cam_start_pos_finished
