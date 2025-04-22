@@ -6,19 +6,15 @@ var dragging = false
 var Cam_y
 var Cam_x
 var zoom_scale = 1
-var Speed = 20
+var Speed = 2
 var _zoom = 1
 var zoom_str = 0.1
 
 func _ready() -> void:
+	#Kamera Zentrieren
 	Cam_y = position.y
 	Cam_x = position.x
-	Global.connect("cam_start_pos_finished", center_cam)
-
-func center_cam():
-	#Kamera Zentrieren
-	Cam_y = Global.cam_start_pos.y
-	Cam_x = Global.cam_start_pos.x
+	
 
 func _input(event: InputEvent) -> void:
 	#Mouse Movement
@@ -52,13 +48,10 @@ func _process(delta: float) -> void:
 		Cam_x -= Speed
 		self.set_position(Vector2(Cam_x, Cam_y))
 	
-	if Input.is_action_just_pressed("Cam_reset") and !Global.in_menu:
-		Cam_x = Global.cam_start_pos.x
-		Cam_y = Global.cam_start_pos.y
-		var Cam = Vector2(Cam_x, Cam_y)
-		var tween = get_tree().create_tween()
-		tween.tween_property(self, "position", Cam, 0.2)
-		#self.set_position(Cam)
+	if Input.is_action_just_pressed("Cam_reset"):
+		Cam_x = 0
+		Cam_y = 0
+		self.set_position(Vector2(Cam_x, Cam_y))
 	
 	#Zoom
 	if Input.is_action_just_pressed("zoom_in"):
