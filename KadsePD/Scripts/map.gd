@@ -7,15 +7,16 @@ var local_pos
 var pos = Vector2i()
 
 func _ready() -> void:
+	if Global.print_size == 0:
+		Global.print_size = 5
 	fill()
+	Global.cam_start_pos = Vector2i(Global.print_size * tile_size / 2, Global.print_size * tile_size / 2)
+	Global.emit_signal("cam_start_pos_finished")
 	found_div.show()
 	found_div.position = get_used_rect().position
 	found_div.size = get_used_rect().size * tile_size
 
 func _process(delta: float) -> void:
-	# "local_pos" is die locale Koordinate der tilemap von der tile auf der
-	# die Maus ist; g_tile_pos is ne Globale var in der die Locale Koordinate
-	# in die Global Koordinate der Tile umgewandelt wird
 	local_pos = local_to_map(get_global_mouse_position())
 	Global.g_tile_pos = map_to_local(local_pos) 
 
