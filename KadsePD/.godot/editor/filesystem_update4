@@ -1,0 +1,17 @@
+res://Scenes/Start.tscn
+res://Assets/Anderes/Theme.tres
+res://Scenes/print.tscn
+res://Scenes/belt.tscn
+res://Scenes/pipe.tscn
+res://Scenes/selection.tscn
+res://Scenes/text.tscn
+res://Scenes/Buildings/constructor.tscn
+res://Scenes/Buildings/Test_building.tscn
+res://Scenes/Buildings/splitter.tscn
+res://Scenes/Buildings/foundry.tscn
+res://Scenes/Buildings/smelter.tscn
+res://Scripts/Menus/camera.gd
+res://Scripts/global.gd
+res://Scripts/Menus/pause_menu.gd
+res://Scripts/print.gd
+res://Saves/Settings.json

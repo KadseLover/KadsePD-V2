@@ -4,6 +4,7 @@ extends Node2D
 @onready var name_: Label = $CanvasLayer/Labels/name
 @onready var Con_menu: PanelContainer = $Con_menu
 @onready var coords: Label = $CanvasLayer/Labels/Coords
+@onready var move_sensi: Label = $CanvasLayer/Labels/Move_Sensi
 @onready var labels: Control = $CanvasLayer/Labels
 @onready var pause_menu: Control = $CanvasLayer/Pause_menu
 @onready var del_ramen: ColorRect = $CanvasLayer/del_ramen
@@ -13,6 +14,7 @@ extends Node2D
 var PIPE = preload("res://Scenes/pipe.tscn")
 var CONSTRUCTOR = preload("res://Scenes/Buildings/constructor.tscn")
 var FOUNDRY = preload("res://Scenes/Buildings/foundry.tscn")
+var SMELTER = preload("res://Scenes/Buildings/smelter.tscn")
 var SPLITTER = preload("res://Scenes/Buildings/splitter.tscn")
 var BELT = preload("res://Scenes/belt.tscn")
 var TEXT = preload("res://Scenes/text.tscn")
@@ -33,6 +35,7 @@ func resize():
 func _process(delta: float) -> void:
 	fps.set_text("FPS: %d" % Engine.get_frames_per_second())
 	coords.text = "Coords: " + str(Global.build_coords)
+	move_sensi.text = "Move Sensitivity: " + str(int(Global.move_sensi))
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("show fps"):
@@ -44,7 +47,7 @@ func _input(event: InputEvent) -> void:
 		pause_menu.show()
 		Global.in_menu = true
 	
-	if Global.in_menu or Global.color_mode:
+	if Global.in_menu:
 		return
 	
 	if Input.is_action_just_pressed("Belts"):
@@ -124,7 +127,9 @@ func spawn_foundry():
 	add_child(new_foundry)
 
 func spawn_smelter():
-	pass
+	var new_smelter = SMELTER.instantiate()
+	new_smelter.position = get_global_mouse_position()
+	add_child(new_smelter)
 
 func spawn_splitter():
 	var new_splitter = SPLITTER.instantiate()

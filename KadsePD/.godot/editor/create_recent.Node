@@ -1,0 +1,14 @@
+Sprite2D
+CollisionShape2D
+Area2D
+ColorRect
+Timer
+Button
+HSeparator
+ColorPickerButton
+ColorPicker
+GridContainer
+AnimationPlayer
+TextureRect
+Node
+Label

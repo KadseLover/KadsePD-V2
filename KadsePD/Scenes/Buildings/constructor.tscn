@@ -14,13 +14,11 @@ texture = ExtResource("1_sj4ak")
 script = ExtResource("2_u1thx")
 
 [node name="Overlay" type="ColorRect" parent="."]
-visible = false
 offset_left = -297.0
 offset_top = -412.0
 offset_right = 297.0
 offset_bottom = 419.0
 mouse_filter = 1
-mouse_default_cursor_shape = 6
 color = Color(0.32549, 1, 1, 0.372549)
 
 [node name="Area2D" type="Area2D" parent="."]

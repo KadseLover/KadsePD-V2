@@ -20,7 +20,9 @@ var print_size
 var print_name
 var build_coords
 var one_build_dragged
-var color_mode
+var cam_start_pos : Vector2i
+var move_sensi = 20
+signal change_move_sensi
 
 
 signal light_cancel_belt
@@ -28,3 +30,4 @@ signal light_cancel_pipe
 signal change_text
 signal change_color
 signal AABB_hiden
+signal cam_start_pos_finished
