@@ -18,7 +18,7 @@ func _ready() -> void:
 	Global.connect("change_color", update_color)
 
 func _input(event: InputEvent) -> void:
-	if Global.in_menu:
+	if Global.in_menu or Global.color_mode:
 		return
 
 	if Input.is_action_just_pressed("LMB") and mouse_in:
@@ -51,10 +51,7 @@ func _process(delta: float) -> void:
 	move_build()
 	offset_ = position - Global.g_tile_pos
 	if spawnt:
-		if Global.id == 1:
-			position = Global.g_tile_pos + Vector2(0, 17)
-		else:
-			position = Global.g_tile_pos
+		position = Global.g_tile_pos
 		if Input.is_action_just_pressed("LMB"):
 			spawnt = false
 		

@@ -13,7 +13,6 @@ extends Node2D
 var PIPE = preload("res://Scenes/pipe.tscn")
 var CONSTRUCTOR = preload("res://Scenes/Buildings/constructor.tscn")
 var FOUNDRY = preload("res://Scenes/Buildings/foundry.tscn")
-var SMELTER = preload("res://Scenes/Buildings/smelter.tscn")
 var SPLITTER = preload("res://Scenes/Buildings/splitter.tscn")
 var BELT = preload("res://Scenes/belt.tscn")
 var TEXT = preload("res://Scenes/text.tscn")
@@ -45,7 +44,7 @@ func _input(event: InputEvent) -> void:
 		pause_menu.show()
 		Global.in_menu = true
 	
-	if Global.in_menu:
+	if Global.in_menu or Global.color_mode:
 		return
 	
 	if Input.is_action_just_pressed("Belts"):
@@ -125,9 +124,7 @@ func spawn_foundry():
 	add_child(new_foundry)
 
 func spawn_smelter():
-	var new_smelter = SMELTER.instantiate()
-	new_smelter.position = get_global_mouse_position()
-	add_child(new_smelter)
+	pass
 
 func spawn_splitter():
 	var new_splitter = SPLITTER.instantiate()

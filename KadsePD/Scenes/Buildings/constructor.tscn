@@ -14,6 +14,7 @@ texture = ExtResource("1_sj4ak")
 script = ExtResource("2_u1thx")
 
 [node name="Overlay" type="ColorRect" parent="."]
+visible = false
 offset_left = -297.0
 offset_top = -412.0
 offset_right = 297.0

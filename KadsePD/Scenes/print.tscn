@@ -230,11 +230,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Constructor"
 
-[node name="Smelter" type="Button" parent="CanvasLayer/Container/Production"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Smelter"
-
 [node name="Foundry" type="Button" parent="CanvasLayer/Container/Production"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -697,7 +692,6 @@ script = ExtResource("12_me6xb")
 [connection signal="pressed" from="CanvasLayer/Container/Main/Text" to="." method="_on_text_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Production/Back" to="CanvasLayer/Container" method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Production/Constructor" to="." method="_on_constructor_pressed"]
-[connection signal="pressed" from="CanvasLayer/Container/Production/Smelter" to="." method="_on_smelter_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Production/Foundry" to="." method="_on_foundry_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Logistic/Back_log" to="CanvasLayer/Container" method="_on_back_log_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Logistic/Belt" to="." method="_on_belt_pressed"]

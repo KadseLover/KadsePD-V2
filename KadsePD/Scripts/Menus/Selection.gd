@@ -26,7 +26,7 @@ func _input(event: InputEvent) -> void:
 		shape.disabled = true
 		Global.emit_signal("AABB_hiden")
 	
-	if Global.building_focus or Global.in_menu or Global.con_menu_mouse or Global.text_focus:
+	if Global.building_focus or Global.in_menu or Global.con_menu_mouse or Global.text_focus or Global.color_mode:
 		return
 	
 	if Input.is_action_just_pressed("LMB"):
