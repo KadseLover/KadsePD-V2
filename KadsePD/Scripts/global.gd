@@ -22,7 +22,7 @@ var build_coords
 var one_build_dragged
 var cam_start_pos : Vector2i
 var move_sensi = 20
-signal change_sensi
+signal change_move_sensi
 
 
 signal light_cancel_belt

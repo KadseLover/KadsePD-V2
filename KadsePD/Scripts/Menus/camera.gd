@@ -13,14 +13,10 @@ var zoom_str = 0.1
 func _ready() -> void:
 	Cam_y = position.y
 	Cam_x = position.x
-	Global.connect("cam_start_pos_finished", center_cam)
-	Global.connect("change_sensi", updateSensi)
+	Global.connect("change_move_sensi", changeMoveSensi)
 
-func updateSensi():
-	if Global.move_sensi == null:
-		Speed = 20
-	else:
-		Speed = int(Global.move_sensi)
+func changeMoveSensi():
+	Speed = Global.move_sensi
 
 func center_cam():
 	#Kamera Zentrieren

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bmafffcarojsq"]
+[gd_scene load_steps=35 format=3 uid="uid://bmafffcarojsq"]
 
 [ext_resource type="Script" uid="uid://3mf7yjlpxu08" path="res://Scripts/print.gd" id="1_t1psh"]
 [ext_resource type="Texture2D" uid="uid://c1a07canohjxf" path="res://Assets/Anderes/Sub-Found.png" id="1_v27ud"]
@@ -70,6 +70,9 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io277"]
 bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0.8)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0vk8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="Animation" id="Animation_junip"]
 resource_name = "Color_change"
 length = 3.8
@@ -84,7 +87,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.0333333, 0.9, 1.96667, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 0, 0, 0.458824), Color(1, 0, 0, 0.286275), Color(1, 0, 0, 0.458824), Color(1, 0, 0, 0.286275)]
+"values": [Color(1, 0, 0, 0.25098), Color(1, 0, 0, 0.0745098), Color(1, 0, 0, 0.25098), Color(1, 0, 0, 0.0745098)]
 }
 
 [sub_resource type="Animation" id="Animation_me6xb"]
@@ -115,7 +118,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.458824)]
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.25098)]
 }
 
 [sub_resource type="Animation" id="Animation_iykep"]
@@ -131,7 +134,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 0, 0, 0.458824), Color(1, 0, 0, 0)]
+"values": [Color(1, 0, 0, 0.25098), Color(1, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i0vk8"]
@@ -562,7 +565,6 @@ offset_left = 248.0
 offset_top = 29.0
 offset_right = 904.0
 offset_bottom = 69.0
-current_tab = 0
 tab_alignment = 1
 deselect_enabled = true
 tab_count = 1
@@ -603,15 +605,16 @@ offset_left = 359.0
 offset_top = 46.0
 offset_right = 517.0
 offset_bottom = 62.0
+step = 5.0
 value = 20.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Pause_menu/Background/input_opt"]
+[node name="MoveLabel" type="Label" parent="CanvasLayer/Pause_menu/Background/input_opt"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 42.0
 offset_right = 331.0
 offset_bottom = 65.0
-text = "Mous Sensitivity:"
+text = "Move Sensitivity:"
 
 [node name="Move_sens_display" type="Label" parent="CanvasLayer/Pause_menu/Background/input_opt"]
 layout_mode = 0
@@ -619,6 +622,7 @@ offset_left = 422.0
 offset_top = 65.0
 offset_right = 462.0
 offset_bottom = 88.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_i0vk8")
 
 [node name="andere_opt" type="Panel" parent="CanvasLayer/Pause_menu/Background"]
 visible = false
@@ -635,7 +639,6 @@ grow_vertical = 2
 theme = ExtResource("4_yi8w6")
 
 [node name="del_ramen" type="ColorRect" parent="CanvasLayer"]
-visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2

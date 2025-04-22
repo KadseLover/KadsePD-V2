@@ -35,7 +35,7 @@ func resize():
 func _process(delta: float) -> void:
 	fps.set_text("FPS: %d" % Engine.get_frames_per_second())
 	coords.text = "Coords: " + str(Global.build_coords)
-	#move_sensi.text = "Move Sensitivity: " + str(int(Global.move_sensi))
+	move_sensi.text = "Move Sensitivity: " + str(int(Global.move_sensi))
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("show fps"):
