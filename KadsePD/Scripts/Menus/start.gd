@@ -1,4 +1,4 @@
-extends Panel
+extends ColorRect
 
 @onready var label: Label = $Ramen/Label
 @onready var tab_container: TabContainer = $Ramen/TabContainer

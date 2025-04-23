@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b5p2v4fw0qjq7" path="res://Scripts/map.gd" id="2_pmsod"]
 [ext_resource type="Texture2D" uid="uid://buwbh0dqq4xxx" path="res://Assets/Anderes/found.png" id="4_junip"]
 [ext_resource type="Script" uid="uid://c122w7d4xisi5" path="res://Scripts/Menus/camera.gd" id="4_shos3"]
-[ext_resource type="Theme" uid="uid://dj32msjjeg33q" path="res://Assets/Anderes/Theme.tres" id="4_yi8w6"]
+[ext_resource type="Theme" uid="uid://blflfmfw4240f" path="res://Assets/Anderes/Theme.tres" id="4_yi8w6"]
 [ext_resource type="Script" uid="uid://2a54sh44b0ah" path="res://Scripts/Menus/Menu.gd" id="6_g75uk"]
 [ext_resource type="Script" uid="uid://i37v8cbml1h1" path="res://Scripts/Menus/con_menu.gd" id="8_eao22"]
 [ext_resource type="Script" uid="uid://bhvvdqk0s2vwp" path="res://Scripts/Menus/pause_menu.gd" id="8_r72kp"]

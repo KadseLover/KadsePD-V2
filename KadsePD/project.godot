@@ -157,3 +157,4 @@ del_group={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.103743, 0.103744, 0.103744, 1)

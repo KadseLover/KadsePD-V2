@@ -1,22 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4ihcclkrfgff"]
+[gd_scene load_steps=6 format=3 uid="uid://d4ihcclkrfgff"]
 
 [ext_resource type="Script" uid="uid://cn4flwkp322xw" path="res://Scripts/Menus/start.gd" id="1_br4kl"]
-[ext_resource type="Theme" uid="uid://dj32msjjeg33q" path="res://Assets/Anderes/Theme.tres" id="2_j8bu1"]
+[ext_resource type="Shader" uid="uid://36iga0dd8t3v" path="res://Assets/Anderes/grid.gd.gdshader" id="1_y4ycm"]
+[ext_resource type="Theme" uid="uid://blflfmfw4240f" path="res://Assets/Anderes/Theme.tres" id="2_j8bu1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1sb5"]
-bg_color = Color(0.0411062, 0.0990603, 0.110863, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4ycm"]
+shader = ExtResource("1_y4ycm")
+shader_parameter/brightness = 2.0
+shader_parameter/thickness = 2.0
+shader_parameter/zoom = 20.0
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/line_color = Color(0.2, 0.5, 0.9, 1)
+shader_parameter/replacement_color = Color(0.1, 0.1, 0.1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp0vs"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="ColorRect"]
+material = SubResource("ShaderMaterial_y4ycm")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i1sb5")
 script = ExtResource("1_br4kl")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_j8bu1")
 
 [node name="Ramen" type="Panel" parent="."]
 layout_mode = 1
