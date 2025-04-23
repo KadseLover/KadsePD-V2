@@ -5,12 +5,16 @@ extends Node2D
 @onready var Con_menu: PanelContainer = $Con_menu
 @onready var coords: Label = $CanvasLayer/Labels/Coords
 @onready var move_sensi: Label = $CanvasLayer/Labels/Move_Sensi
+@onready var building_count: Label = $CanvasLayer/Labels/BuildingCount
 @onready var labels: Control = $CanvasLayer/Labels
 @onready var pause_menu: Control = $CanvasLayer/Pause_menu
 @onready var del_ramen: ColorRect = $CanvasLayer/del_ramen
 @onready var camera: Camera2D = $Camera2D
 @onready var animation_delete: AnimationPlayer = $CanvasLayer/del_ramen/Animation_delete
 @onready var timer: Timer = $CanvasLayer/del_ramen/Timer
+@onready var buildings: Node2D = $Buildings
+@onready var texts: Node2D = $Texts
+@onready var belts: Node2D = $Belts
 var PIPE = preload("res://Scenes/pipe.tscn")
 var CONSTRUCTOR = preload("res://Scenes/Buildings/constructor.tscn")
 var FOUNDRY = preload("res://Scenes/Buildings/foundry.tscn")
@@ -18,6 +22,8 @@ var SMELTER = preload("res://Scenes/Buildings/smelter.tscn")
 var SPLITTER = preload("res://Scenes/Buildings/splitter.tscn")
 var BELT = preload("res://Scenes/belt.tscn")
 var TEXT = preload("res://Scenes/text.tscn")
+
+
 
 func _ready() -> void:
 	del_ramen.show()
@@ -33,9 +39,11 @@ func resize():
 	del_ramen.size = screen_size
 
 func _process(delta: float) -> void:
+	counter()
 	fps.set_text("FPS: %d" % Engine.get_frames_per_second())
-	coords.text = "Coords: " + str(Global.build_coords)
+	coords.text = "Position: " + str(Global.build_coords)
 	move_sensi.text = "Move Sensitivity: " + str(int(Global.move_sensi))
+	building_count.text = "Building Count: " + str(Global.building_counter)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("show fps"):
@@ -92,51 +100,70 @@ func timer_delete():
 func spawn_text():
 	var new_text = TEXT.instantiate()
 	new_text.position = get_global_mouse_position()
-	add_child(new_text)
+	texts.add_child(new_text)
 
 func belt_cancel():
 	Global.building = true
 	Global.laying = true
 	var new_Belt = BELT.instantiate()
-	add_child(new_Belt)
+	belts.add_child(new_Belt)
 
 func pipe_cancel():
 	Global.building = true
 	Global.laying = true
 	var new_Pipe = PIPE.instantiate()
-	add_child(new_Pipe)
+	belts.add_child(new_Pipe)
 
 func spawn_belt():
-	var new_belt = BELT.instantiate()
-	new_belt.position = get_global_mouse_position()
-	add_child(new_belt)
+	var new_position = get_global_mouse_position()
+	if not is_position_occupied(new_position):
+		var new_belt = BELT.instantiate()
+		new_belt.position = new_position
+		buildings.add_child(new_belt)
 
 func spawn_pipe():
-	var new_pipe = PIPE.instantiate()
-	new_pipe.position = get_global_mouse_position()
-	add_child(new_pipe)
+	var new_position = get_global_mouse_position()
+	if not is_position_occupied(new_position):
+		var new_pipe = PIPE.instantiate()
+		new_pipe.position = new_position
+		buildings.add_child(new_pipe)
 
 func spawn_constructor():
-	var new_Constructor = CONSTRUCTOR.instantiate()
-	new_Constructor.position = get_global_mouse_position()
-	add_child(new_Constructor)
+	var new_position = get_global_mouse_position()
+	if not is_position_occupied(new_position):
+		var new_Constructor = CONSTRUCTOR.instantiate()
+		new_Constructor.position = new_position
+		buildings.add_child(new_Constructor)
 
 func spawn_foundry():
-	var new_foundry = FOUNDRY.instantiate()
-	new_foundry.position = get_global_mouse_position()
-	add_child(new_foundry)
+	var new_position = get_global_mouse_position()
+	if not is_position_occupied(new_position):
+		var new_Foundry = FOUNDRY.instantiate()
+		new_Foundry.position = new_position
+		buildings.add_child(new_Foundry)
 
 func spawn_smelter():
-	var new_smelter = SMELTER.instantiate()
-	new_smelter.position = get_global_mouse_position()
-	add_child(new_smelter)
+	var new_position = get_global_mouse_position()
+	if not is_position_occupied(new_position):
+		var new_Smelter = SMELTER.instantiate()
+		new_Smelter.position = new_position
+		buildings.add_child(new_Smelter)
 
 func spawn_splitter():
-	var new_splitter = SPLITTER.instantiate()
-	new_splitter.position = get_global_mouse_position()
-	add_child(new_splitter)
+	var new_position = get_global_mouse_position()
+	if not is_position_occupied(new_position):
+		var new_Splitter = SPLITTER.instantiate()
+		new_Splitter.position = new_position
+		buildings.add_child(new_Splitter)
 
-#Buttons
+func is_position_occupied(position: Vector2) -> bool:
+	for building in buildings.get_children():
+		if building.position.distance_to(position) < 50:  # Adjust the distance threshold as needed
+			return true
+	return false
+
+func counter():
+	Global.building_counter =+ buildings.get_children().size() / 2
 
 func _on_constructor_pressed() -> void:
 	spawn_constructor()

@@ -9,13 +9,14 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[node name="Belt" type="Line2D"]
+[node name="Belt" type="Line2D" groups=["Pipes"]]
 z_as_relative = false
 points = PackedVector2Array(0, 0)
 width = 30.0
 default_color = Color(0.145098, 0.145098, 0.145098, 1)
 joint_mode = 2
 script = ExtResource("1_e8c3u")
+id = 1
 
 [node name="Panel" type="Panel" parent="."]
 z_as_relative = false

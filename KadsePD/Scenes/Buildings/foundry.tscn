@@ -12,6 +12,7 @@ position = Vector2(119, 153.017)
 scale = Vector2(0.350516, 0.386321)
 texture = ExtResource("1_1erwk")
 script = ExtResource("2_p3a25")
+id = 3
 
 [node name="Overlay" type="ColorRect" parent="."]
 offset_left = -339.0

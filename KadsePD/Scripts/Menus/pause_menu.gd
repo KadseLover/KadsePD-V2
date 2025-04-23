@@ -74,14 +74,19 @@ func updateDikt():
 	settings["MoveSensi"] = Global.move_sensi
 
 func save_data(path, data):
+	#Open the file in WRITE mode
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	
+	#Store 'data' as a JSON string
 	if file:
 		file.store_line(JSON.stringify(data))
 		file.close()
 
 func load_data_from_file(path):
+	#Open the file READ mode
 	var file = FileAccess.open(path, FileAccess.READ)
+	
+	#Read the JSON string and return the parsed string(Convertet to a normal Dictonary)
 	if file:
 		var data = file.get_as_text()
 		file.close()
@@ -90,6 +95,7 @@ func load_data_from_file(path):
 		return ""
 
 func load_data_in():
+	#Apply all the changes
 	settings = load_data_from_file(settings_save_path)
 	
 	Global.move_sensi = settings["MoveSensi"]

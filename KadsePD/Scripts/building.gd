@@ -2,20 +2,22 @@ extends Sprite2D
 
 var mouse_in
 var dragging
-var spawnt
+var spawnt = true
 var offset_
-var id
 var selectet = false
 var in_selection_box
 @onready var Overlay: ColorRect = $Overlay
+@export var id: int
 
+var save
+var save_path = "res://Saves/Save1.json"
+var loaded_in = true
 
 
 func _ready() -> void:
-	spawnt = true
 	Overlay.hide()
-	index()
 	Global.connect("change_color", update_color)
+
 
 func _input(event: InputEvent) -> void:
 	if Global.in_menu:
@@ -51,7 +53,7 @@ func _process(delta: float) -> void:
 	move_build()
 	offset_ = position - Global.g_tile_pos
 	if spawnt:
-		if Global.id == 1:
+		if id == 4:
 			position = Global.g_tile_pos + Vector2(0, 17)
 		else:
 			position = Global.g_tile_pos
@@ -94,16 +96,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		Global.building_focus = false
 		queue_free()
 
-func index():
-	match name:
-		"Smelter":
-			Global.id = 1
-		"Foundry":
-			Global.id = 2
-		"Constructor":
-			Global.id = 3
-		"Splitter":
-			Global.id = 4
 
 func update_color():
 	if selectet:

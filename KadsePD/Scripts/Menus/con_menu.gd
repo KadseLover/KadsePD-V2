@@ -1,6 +1,7 @@
 extends PanelContainer
 
 @onready var print: Node2D = $".."
+@onready var texts: Node2D = $"../Texts"
 @onready var text: Button = $GridContainer/Text
 @onready var color: Button = $GridContainer/Color
 @onready var change_text: Button = $"GridContainer/Change Text"
@@ -22,7 +23,7 @@ func _input(event: InputEvent) -> void:
 func _on_text_pressed() -> void:
 	var new_text = TEXT.instantiate()
 	new_text.position = get_global_mouse_position()
-	print.add_child(new_text)
+	texts.add_child(new_text)
 	hide()
 
 func _on_change_text_pressed() -> void:
@@ -31,7 +32,6 @@ func _on_change_text_pressed() -> void:
 
 func _on_color_pressed() -> void:
 	Global.in_menu = true
-	print("bro was")
 	color_edit.show()
 
 func _on_mouse_exited() -> void:
