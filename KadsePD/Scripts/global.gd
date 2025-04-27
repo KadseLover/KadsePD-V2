@@ -22,6 +22,10 @@ var cam_start_pos : Vector2i
 var move_sensi = 20
 var building_counter
 
+var loaded_building_arr = []
+var loaded_text_arr = []
+var loaded_belt_arr = []
+
 
 signal light_cancel_belt
 signal light_cancel_pipe
@@ -30,4 +34,3 @@ signal change_color
 signal AABB_hiden
 signal cam_start_pos_finished
 signal change_move_sensi
-signal save_pressed

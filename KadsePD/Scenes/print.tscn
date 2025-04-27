@@ -390,6 +390,7 @@ offset_bottom = 365.0
 text = "Finish"
 
 [node name="Labels" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 579.0
@@ -422,13 +423,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_d1omu")
 text = "Name"
 label_settings = SubResource("LabelSettings_junip")
 
-[node name="BuildingCount" type="Label" parent="CanvasLayer/Labels"]
+[node name="Print_size" type="Label" parent="CanvasLayer/Labels"]
 layout_mode = 0
 offset_top = -20.0
-offset_right = 114.0
+offset_right = 71.0
 offset_bottom = 3.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_erva7")
-text = "Building Count"
+text = "Print size"
 label_settings = SubResource("LabelSettings_iykep")
 
 [node name="Coords" type="Label" parent="CanvasLayer/Labels"]
@@ -478,10 +479,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = -101.0
-offset_right = 145.0
-offset_bottom = 111.0
+offset_left = -141.5
+offset_top = -106.0
+offset_right = 141.5
+offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_io277")
@@ -511,28 +512,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -137.5
 offset_top = 65.0
-offset_right = -19.5
+offset_right = 138.5
 offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_yi8w6")
 text = "Save"
-
-[node name="Load" type="Button" parent="CanvasLayer/Pause_menu/Background/Box"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 16.5
-offset_top = 65.0
-offset_right = 134.5
-offset_bottom = 97.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_yi8w6")
-text = "Load"
 
 [node name="options" type="Button" parent="CanvasLayer/Pause_menu/Background/Box"]
 layout_mode = 1
@@ -712,15 +697,6 @@ access = 2
 filters = PackedStringArray("*.json")
 use_native_dialog = true
 
-[node name="FileLoad" type="FileDialog" parent="saveManager"]
-auto_translate_mode = 1
-title = "Open a File"
-ok_button_text = "Open"
-file_mode = 0
-access = 2
-filters = PackedStringArray("*.json")
-use_native_dialog = true
-
 [connection signal="pressed" from="CanvasLayer/Container/Main/Back_men" to="CanvasLayer/Container" method="_on_back_men_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Main/Production" to="CanvasLayer/Container" method="_on_production_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Main/Logistic" to="CanvasLayer/Container" method="_on_logistic_pressed"]
@@ -738,7 +714,6 @@ use_native_dialog = true
 [connection signal="pressed" from="CanvasLayer/Ediors/ColorEdit/Finsh_color" to="Con_menu" method="_on_finsh_color_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/Continue" to="CanvasLayer/Pause_menu" method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/Save" to="saveManager" method="_on_save_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/Load" to="saveManager" method="_on_load_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/options" to="CanvasLayer/Pause_menu" method="_on_options_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/Exit" to="CanvasLayer/Pause_menu" method="_on_exit_pressed"]
 [connection signal="tab_changed" from="CanvasLayer/Pause_menu/Background/TabBar" to="CanvasLayer/Pause_menu" method="_on_tab_bar_tab_changed"]
@@ -758,4 +733,3 @@ use_native_dialog = true
 [connection signal="mouse_exited" from="Con_menu/GridContainer/Color" to="Con_menu" method="_on_mouse_exited"]
 [connection signal="pressed" from="Con_menu/GridContainer/Color" to="Con_menu" method="_on_color_pressed"]
 [connection signal="file_selected" from="saveManager/FileSave" to="saveManager" method="_on_file_save_file_selected"]
-[connection signal="file_selected" from="saveManager/FileLoad" to="saveManager" method="_on_file_load_file_selected"]

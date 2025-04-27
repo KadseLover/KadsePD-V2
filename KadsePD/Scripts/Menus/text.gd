@@ -4,11 +4,10 @@ extends Label
 var mouse_in = false
 var dragging
 var offset_
-var spawnt
+var spawnt = true
 var selectet
 
 func _ready() -> void:
-	spawnt = true
 	Global.connect("change_text", update)
 
 func _input(event: InputEvent) -> void:

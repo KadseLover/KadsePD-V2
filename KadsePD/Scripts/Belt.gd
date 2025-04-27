@@ -2,7 +2,8 @@ extends Line2D
 
 var pressed_spawn
 var point
-var spawnt
+var spawnt = true
+var loaded_in = false
 var delet_mode
 var cancelt
 var last_point
@@ -17,7 +18,6 @@ func _ready() -> void:
 	Global.can_drag = false
 	Global.laying = true
 	panel.show()
-	spawnt = true
 	cancelt = false
 	can_revert = true
 
@@ -71,7 +71,7 @@ func _process(delta: float) -> void:
 	last_point = point - 1
 	if spawnt:
 		position = Global.g_tile_pos
-	else:
+	elif !loaded_in:
 		if !cancelt:
 			set_point_position(point, to_local(Global.g_tile_pos))
 		else:
