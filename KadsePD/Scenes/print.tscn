@@ -1,16 +1,16 @@
-[gd_scene load_steps=35 format=3 uid="uid://bmafffcarojsq"]
+[gd_scene load_steps=38 format=3 uid="uid://bmafffcarojsq"]
 
 [ext_resource type="Script" uid="uid://3mf7yjlpxu08" path="res://Scripts/print.gd" id="1_t1psh"]
 [ext_resource type="Texture2D" uid="uid://c1a07canohjxf" path="res://Assets/Anderes/Sub-Found.png" id="1_v27ud"]
 [ext_resource type="Script" uid="uid://b5p2v4fw0qjq7" path="res://Scripts/map.gd" id="2_pmsod"]
 [ext_resource type="Texture2D" uid="uid://buwbh0dqq4xxx" path="res://Assets/Anderes/found.png" id="4_junip"]
 [ext_resource type="Script" uid="uid://c122w7d4xisi5" path="res://Scripts/Menus/camera.gd" id="4_shos3"]
-[ext_resource type="Theme" uid="uid://dj32msjjeg33q" path="res://Assets/Anderes/Theme.tres" id="4_yi8w6"]
+[ext_resource type="Theme" uid="uid://blflfmfw4240f" path="res://Assets/Anderes/Theme.tres" id="4_yi8w6"]
 [ext_resource type="Script" uid="uid://2a54sh44b0ah" path="res://Scripts/Menus/Menu.gd" id="6_g75uk"]
 [ext_resource type="Script" uid="uid://i37v8cbml1h1" path="res://Scripts/Menus/con_menu.gd" id="8_eao22"]
 [ext_resource type="Script" uid="uid://bhvvdqk0s2vwp" path="res://Scripts/Menus/pause_menu.gd" id="8_r72kp"]
 [ext_resource type="PackedScene" uid="uid://bxnhbjarxmvbb" path="res://Scenes/selection.tscn" id="9_72i4s"]
-[ext_resource type="Script" uid="uid://ms3di4pk630c" path="res://Scripts/Menus/save_manager.gd" id="12_me6xb"]
+[ext_resource type="Script" uid="uid://ctqdig2qalvms" path="res://Scripts/save_manager.gd" id="11_junip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4i4w"]
 texture = ExtResource("1_v27ud")
@@ -52,13 +52,19 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_i0vk8"]
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iykep"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1omu"]
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_junip"]
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1omu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erva7"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iykep"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iykep"]
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_junip"]
@@ -69,6 +75,9 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io277"]
 bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j5w0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0vk8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -381,7 +390,6 @@ offset_bottom = 365.0
 text = "Finish"
 
 [node name="Labels" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 579.0
@@ -394,12 +402,34 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.31
 anchor_bottom = -0.31
-offset_top = 1.0
+offset_top = -35.0
 offset_right = 40.0
-offset_bottom = 24.0
+offset_bottom = -12.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_me6xb")
 text = "FPS"
 label_settings = SubResource("LabelSettings_i0vk8")
+
+[node name="name" type="Label" parent="CanvasLayer/Labels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.31
+anchor_right = 0.07
+anchor_bottom = -0.31
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 11.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_d1omu")
+text = "Name"
+label_settings = SubResource("LabelSettings_junip")
+
+[node name="Print_size" type="Label" parent="CanvasLayer/Labels"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 71.0
+offset_bottom = 3.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_erva7")
+text = "Print size"
+label_settings = SubResource("LabelSettings_iykep")
 
 [node name="Coords" type="Label" parent="CanvasLayer/Labels"]
 layout_mode = 1
@@ -411,19 +441,6 @@ offset_right = 55.0
 offset_bottom = 86.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_iykep")
 text = "Coords"
-label_settings = SubResource("LabelSettings_junip")
-
-[node name="name" type="Label" parent="CanvasLayer/Labels"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.31
-anchor_right = 0.07
-anchor_bottom = -0.31
-offset_top = 24.0
-offset_right = 40.0
-offset_bottom = 47.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_d1omu")
-text = "Name"
 label_settings = SubResource("LabelSettings_junip")
 
 [node name="Move_Sensi" type="Label" parent="CanvasLayer/Labels"]
@@ -461,10 +478,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = -101.0
-offset_right = 145.0
-offset_bottom = 111.0
+offset_left = -141.5
+offset_top = -106.0
+offset_right = 141.5
+offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_io277")
@@ -494,28 +511,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -137.5
 offset_top = 65.0
-offset_right = -19.5
+offset_right = 138.5
 offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_yi8w6")
 text = "Save"
-
-[node name="load" type="Button" parent="CanvasLayer/Pause_menu/Background/Box"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 15.5
-offset_top = 65.0
-offset_right = 133.5
-offset_bottom = 97.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_yi8w6")
-text = "Load"
 
 [node name="options" type="Button" parent="CanvasLayer/Pause_menu/Background/Box"]
 layout_mode = 1
@@ -614,6 +615,7 @@ offset_left = 200.0
 offset_top = 42.0
 offset_right = 331.0
 offset_bottom = 65.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_6j5w0")
 text = "Move Sensitivity:"
 
 [node name="Move_sens_display" type="Label" parent="CanvasLayer/Pause_menu/Background/input_opt"]
@@ -639,6 +641,7 @@ grow_vertical = 2
 theme = ExtResource("4_yi8w6")
 
 [node name="del_ramen" type="ColorRect" parent="CanvasLayer"]
+visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
@@ -679,8 +682,19 @@ text = "Change Color"
 
 [node name="Selection" parent="." instance=ExtResource("9_72i4s")]
 
-[node name="save_manager" type="Node" parent="."]
-script = ExtResource("12_me6xb")
+[node name="Buildings" type="Node2D" parent="."]
+
+[node name="Texts" type="Node2D" parent="."]
+
+[node name="Belts" type="Node2D" parent="."]
+
+[node name="saveManager" type="Node" parent="."]
+script = ExtResource("11_junip")
+
+[node name="FileSave" type="FileDialog" parent="saveManager"]
+access = 2
+filters = PackedStringArray("*.json")
+use_native_dialog = true
 
 [connection signal="pressed" from="CanvasLayer/Container/Main/Back_men" to="CanvasLayer/Container" method="_on_back_men_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Main/Production" to="CanvasLayer/Container" method="_on_production_pressed"]
@@ -698,6 +712,7 @@ script = ExtResource("12_me6xb")
 [connection signal="pressed" from="CanvasLayer/Ediors/TextEditor/Finsh_text" to="Con_menu" method="_on_finsh_text_pressed"]
 [connection signal="pressed" from="CanvasLayer/Ediors/ColorEdit/Finsh_color" to="Con_menu" method="_on_finsh_color_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/Continue" to="CanvasLayer/Pause_menu" method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/Save" to="saveManager" method="_on_save_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/options" to="CanvasLayer/Pause_menu" method="_on_options_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause_menu/Background/Box/Exit" to="CanvasLayer/Pause_menu" method="_on_exit_pressed"]
 [connection signal="tab_changed" from="CanvasLayer/Pause_menu/Background/TabBar" to="CanvasLayer/Pause_menu" method="_on_tab_bar_tab_changed"]
@@ -716,3 +731,4 @@ script = ExtResource("12_me6xb")
 [connection signal="mouse_entered" from="Con_menu/GridContainer/Color" to="Con_menu" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Con_menu/GridContainer/Color" to="Con_menu" method="_on_mouse_exited"]
 [connection signal="pressed" from="Con_menu/GridContainer/Color" to="Con_menu" method="_on_color_pressed"]
+[connection signal="file_selected" from="saveManager/FileSave" to="saveManager" method="_on_file_save_file_selected"]

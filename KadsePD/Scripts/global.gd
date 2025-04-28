@@ -5,8 +5,6 @@ var can_drag
 var building
 var laying
 var delete_mode
-var id
-var id_belt
 var can_get_back
 var text_focus
 var building_focus
@@ -22,7 +20,11 @@ var build_coords
 var one_build_dragged
 var cam_start_pos : Vector2i
 var move_sensi = 20
-signal change_move_sensi
+
+var loaded_building_arr = []
+var loaded_text_arr = []
+var loaded_belt_arr = []
+var loaded_notes_string = ""
 
 
 signal light_cancel_belt
@@ -31,3 +33,4 @@ signal change_text
 signal change_color
 signal AABB_hiden
 signal cam_start_pos_finished
+signal change_move_sensi

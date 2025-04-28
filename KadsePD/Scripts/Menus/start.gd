@@ -1,33 +1,37 @@
-extends Panel
+extends ColorRect
 
-@onready var label: Label = $Ramen/Label
-@onready var tab_container: TabContainer = $Ramen/TabContainer
-@onready var name_: LineEdit = $Ramen/TabContainer/Name
-@onready var size_: HSlider = $Ramen/TabContainer/Size
-@onready var ramen: Panel = $Ramen
+@onready var name_display: Label = $"TabContainer/New save/name_display"
+@onready var size_display: Label = $"TabContainer/New save/size_display"
+@onready var name_: LineEdit = $"TabContainer/New save/Name"
+@onready var size_: HSlider = $"TabContainer/New save/Size"
+
+
+var can_start
+
+var settings_path = "user://Settings.json"
 
 func _ready() -> void:
-	Global.print_size = size_.value
-	Global.print_name = label.text
-	
+	pass
+
 
 func _process(delta: float) -> void:
-	if size_.visible:
-		Global.print_size = size_.value
-		label.text = "Size: " + str(Global.print_size) + "x" + str(Global.print_size)
+	size_display.text = "Print size: %sx%s" % [str(size_.value), str(size_.value)]
 	
-	if name_.visible:
-		Global.print_name = name_.text
-		if name_.text == "":
-			label.text = "Need Name!"
-			label.modulate = Color.CRIMSON
-		else:
-			label.text = "Name: " + str(Global.print_name)
-			label.modulate = Color.WHITE
+	if name_.text == "":
+		can_start = false
+		name_display.text = "Need a name!"
+		name_display.modulate = Color.FIREBRICK
+	else:
+		can_start = true
+		name_display.text = "Print name: %s" % name_.text
+		name_display.modulate = Color.WHITE
+
 
 func _on_start_pressed() -> void:
-	ramen.hide()
-	get_tree().change_scene_to_file("res://Scenes/print.tscn")
+	if can_start:
+		Global.print_size = size_.value
+		Global.print_name = name_.text
+		get_tree().change_scene_to_file("res://Scenes/print.tscn")
 
 
 func _on_exit_pressed() -> void:

@@ -1,77 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4ihcclkrfgff"]
+[gd_scene load_steps=8 format=3 uid="uid://d4ihcclkrfgff"]
 
 [ext_resource type="Script" uid="uid://cn4flwkp322xw" path="res://Scripts/Menus/start.gd" id="1_br4kl"]
-[ext_resource type="Theme" uid="uid://dj32msjjeg33q" path="res://Assets/Anderes/Theme.tres" id="2_j8bu1"]
+[ext_resource type="Shader" uid="uid://36iga0dd8t3v" path="res://Assets/Anderes/shader/grid_hauptmenu.gdshader" id="1_y4ycm"]
+[ext_resource type="Theme" uid="uid://blflfmfw4240f" path="res://Assets/Anderes/Theme.tres" id="2_j8bu1"]
+[ext_resource type="Script" uid="uid://buudnc2v5yn51" path="res://Scripts/load_manager.gd" id="4_1lxxj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1sb5"]
-bg_color = Color(0.0411062, 0.0990603, 0.110863, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lxxj"]
+shader = ExtResource("1_y4ycm")
+shader_parameter/brightness = 2.0
+shader_parameter/thickness = 2.0
+shader_parameter/zoom = 20.0
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/line_color = Color(0.2, 0.5, 0.9, 1)
+shader_parameter/replacement_color = Color(0.1, 0.1, 0.1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp0vs"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="Panel" type="Panel"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lxxj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Panel" type="ColorRect"]
+material = SubResource("ShaderMaterial_1lxxj")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i1sb5")
 script = ExtResource("1_br4kl")
 
-[node name="Ramen" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -158.5
-offset_top = -59.5
-offset_right = 158.5
-offset_bottom = 59.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_j8bu1")
 
-[node name="TabContainer" type="TabContainer" parent="Ramen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -134.5
-offset_top = -40.5
-offset_right = 131.5
-offset_bottom = 25.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_j8bu1")
-current_tab = 0
-
-[node name="Name" type="LineEdit" parent="Ramen/TabContainer"]
-layout_mode = 2
-text = "Print"
-metadata/_tab_index = 0
-
-[node name="Size" type="HSlider" parent="Ramen/TabContainer"]
-visible = false
-layout_mode = 2
-max_value = 1000.0
-step = 50.0
-value = 100.0
-rounded = true
-metadata/_tab_index = 1
-
-[node name="Label" type="Label" parent="Ramen"]
-layout_mode = 2
-offset_left = 30.0
-offset_top = 89.0
-offset_right = 283.0
-offset_bottom = 112.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_tp0vs")
-
-[node name="Start" type="Button" parent="Ramen"]
+[node name="Exit" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,29 +46,131 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -47.0
-offset_top = 72.5
+offset_top = -155.0
 offset_right = 47.0
-offset_bottom = 104.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_j8bu1")
-text = "Start"
-
-[node name="Exit" type="Button" parent="Ramen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = -104.0
-offset_right = 47.0
-offset_bottom = -72.0
+offset_bottom = -123.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_j8bu1")
 text = "Close"
 
-[connection signal="pressed" from="Ramen/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Ramen/Exit" to="." method="_on_exit_pressed"]
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.5
+offset_top = -102.5
+offset_right = 212.5
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+
+[node name="New save" type="Panel" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_j8bu1")
+metadata/_tab_index = 0
+
+[node name="name_display" type="Label" parent="TabContainer/New save"]
+layout_mode = 2
+anchor_left = 0.0352941
+anchor_top = 0.385057
+anchor_right = 0.964706
+anchor_bottom = 0.517241
+theme_override_styles/normal = SubResource("StyleBoxFlat_tp0vs")
+text = "sda"
+metadata/_edit_use_anchors_ = true
+
+[node name="size_display" type="Label" parent="TabContainer/New save"]
+layout_mode = 2
+anchor_left = 0.0352941
+anchor_top = 0.810345
+anchor_right = 0.964706
+anchor_bottom = 0.942529
+theme_override_styles/normal = SubResource("StyleBoxFlat_tp0vs")
+text = "dsf"
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="LineEdit" parent="TabContainer/New save"]
+layout_mode = 2
+anchor_left = 0.0352941
+anchor_top = 0.0862069
+anchor_right = 0.964706
+anchor_bottom = 0.344828
+text = "Print"
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Size" type="HSlider" parent="TabContainer/New save"]
+layout_mode = 2
+anchor_left = 0.0352941
+anchor_top = 0.649425
+anchor_right = 0.964706
+anchor_bottom = 0.741379
+max_value = 1000.0
+step = 50.0
+value = 100.0
+rounded = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Start" type="Button" parent="TabContainer/New save"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389412
+anchor_top = 1.05747
+anchor_right = 0.610588
+anchor_bottom = 1.24138
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_j8bu1")
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="Load_save" type="Panel" parent="TabContainer"]
+layout_mode = 2
+theme = ExtResource("2_j8bu1")
+script = ExtResource("4_1lxxj")
+metadata/_tab_index = 1
+
+[node name="load" type="Button" parent="TabContainer/Load_save"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -16.0
+offset_right = 65.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select a file"
+
+[node name="FileDialog" type="FileDialog" parent="TabContainer/Load_save/load"]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.json")
+use_native_dialog = true
+
+[node name="Label" type="Label" parent="TabContainer/Load_save"]
+layout_mode = 0
+offset_left = 8.5
+offset_top = 15.5
+offset_right = 143.5
+offset_bottom = 38.5
+theme_override_styles/normal = SubResource("StyleBoxFlat_1lxxj")
+text = "Select a JSON file:"
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="TabContainer/New save/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TabContainer/Load_save/load" to="TabContainer/Load_save" method="_on_load_pressed"]
+[connection signal="file_selected" from="TabContainer/Load_save/load/FileDialog" to="TabContainer/Load_save" method="_on_file_dialog_file_selected"]

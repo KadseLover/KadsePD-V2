@@ -10,18 +10,13 @@ var Speed = 20
 var _zoom = 1
 var zoom_str = 0.1
 
+
 func _ready() -> void:
-	Cam_y = position.y
-	Cam_x = position.x
 	Global.connect("change_move_sensi", changeMoveSensi)
 
 func changeMoveSensi():
+	position = Vector2(Global.cam_start_pos.x, Global.cam_start_pos.y)
 	Speed = Global.move_sensi
-
-func center_cam():
-	#Kamera Zentrieren
-	Cam_y = Global.cam_start_pos.y
-	Cam_x = Global.cam_start_pos.x
 
 func _input(event: InputEvent) -> void:
 	#Mouse Movement
@@ -56,11 +51,7 @@ func _process(delta: float) -> void:
 		self.set_position(Vector2(Cam_x, Cam_y))
 	
 	if Input.is_action_just_pressed("Cam_reset") and !Global.in_menu:
-		Cam_x = Global.cam_start_pos.x
-		Cam_y = Global.cam_start_pos.y
-		var Cam = Vector2(Cam_x, Cam_y)
-		var tween = get_tree().create_tween()
-		tween.tween_property(self, "position", Cam, 0.2)
+		center_cam_()
 		#self.set_position(Cam)
 	
 	#Zoom
@@ -76,3 +67,11 @@ func _process(delta: float) -> void:
 			_zoom -= zoom_str
 			zoom_scale += zoom_str
 			self.set_zoom(Vector2(_zoom, _zoom))
+
+func center_cam_():
+	#Kamera Zentrieren
+	Cam_y = Global.cam_start_pos.y
+	Cam_x = Global.cam_start_pos.x
+	var Cam = Vector2(Cam_x, Cam_y)
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", Cam, 0.2)

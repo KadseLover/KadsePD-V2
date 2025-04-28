@@ -1,13 +1,13 @@
-[gd_resource type="Theme" load_steps=45 format=3 uid="uid://dj32msjjeg33q"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5floe"]
-bg_color = Color(1, 0.435294, 0.0666667, 0.678431)
+[gd_resource type="Theme" load_steps=45 format=3 uid="uid://blflfmfw4240f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a1xj"]
 bg_color = Color(0.776471, 0.321569, 0, 0.529412)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p144"]
 bg_color = Color(0.88, 0.366667, 0, 0.631373)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5e7f"]
+bg_color = Color(1, 0.435294, 0.0666667, 0.678431)
 
 [sub_resource type="Image" id="Image_f5e7f"]
 data = {
@@ -206,6 +206,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.473101, 0.233105, 4.81308e-08, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2wnx"]
 bg_color = Color(0.0588235, 0.0588235, 0.0588235, 0.811765)
@@ -248,9 +252,9 @@ border_color = Color(0.262745, 0.301961, 0.490196, 0.882353)
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 23
-Button/styles/focus = SubResource("StyleBoxFlat_5floe")
 Button/styles/hover = SubResource("StyleBoxFlat_4a1xj")
 Button/styles/normal = SubResource("StyleBoxFlat_7p144")
+Button/styles/pressed = SubResource("StyleBoxFlat_f5e7f")
 ColorPicker/constants/center_slider_grabbers = 1
 ColorPicker/constants/h_width = 30
 ColorPicker/constants/label_width = 10
@@ -277,6 +281,7 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_5jfau")
 HSlider/styles/slider = SubResource("StyleBoxLine_mosa1")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/styles/normal = SubResource("StyleBoxFlat_fjeyo")
+LineEdit/colors/font_uneditable_color = Color(0.875, 0.875, 0.875, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_w4nef")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_x2wnx")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_nh1nh")

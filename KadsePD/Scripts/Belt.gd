@@ -2,7 +2,8 @@ extends Line2D
 
 var pressed_spawn
 var point
-var spawnt
+var spawnt = true
+var loaded_in = false
 var delet_mode
 var cancelt
 var last_point
@@ -10,16 +11,15 @@ var can_revert
 var mouse_in
 @onready var static_body: StaticBody2D = $StaticBody2D
 @onready var panel: Panel = $Panel
+@export var id: int
 
 func _ready() -> void:
 	Global.can_get_back = true
 	Global.can_drag = false
 	Global.laying = true
 	panel.show()
-	spawnt = true
 	cancelt = false
 	can_revert = true
-	index()
 
 func _input(event: InputEvent) -> void:
 	# Add Colision Shapes to belt:
@@ -41,12 +41,12 @@ func _input(event: InputEvent) -> void:
 					rect.extents = Vector2(length / 2, width / 2)
 					new_shape.shape = rect
 	
-	if Global.id_belt == 1:
+	if id == 1:
 		if Input.is_action_just_pressed("Belts"):
 			can_revert = false
 			cancelt = true
 			Global.light_cancel_belt.emit()
-	if Global.id_belt == 2:
+	if id == 2:
 		if Input.is_action_just_pressed("Pipe"):
 			can_revert = false
 			cancelt = true
@@ -71,7 +71,7 @@ func _process(delta: float) -> void:
 	last_point = point - 1
 	if spawnt:
 		position = Global.g_tile_pos
-	else:
+	elif !loaded_in:
 		if !cancelt:
 			set_point_position(point, to_local(Global.g_tile_pos))
 		else:
@@ -83,13 +83,6 @@ func _process(delta: float) -> void:
 func _on_static_body_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Global.delete_mode and Input.is_action_just_pressed("LMB"):
 		queue_free()
-
-func index():
-	match name:
-		"Belt":
-			Global.id_belt = 1
-		"Pipe":
-			Global.id_belt = 2
 
 
 func _on_static_body_2d_mouse_entered() -> void:

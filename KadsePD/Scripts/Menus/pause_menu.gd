@@ -12,12 +12,17 @@ extends Control
 var settings
 var move_sensi
 
-var settings_save_path = "res://Saves/Settings.json"
+var settings_save_path = "user://Settings.json"
 
 func _ready() -> void:
-	load_data_in()
+	if FileAccess.file_exists(settings_save_path):
+		load_data_from_file(settings_save_path)
+	else:
+		Global.move_sensi = 20
+		move_sensi_slider.value = 20
+		Global.emit_signal("change_move_sensi")
 	settings = {
-		"MoveSensi": 20
+		"MoveSensi": 20,
 	}
 
 func _on_continue_pressed() -> void:
@@ -26,6 +31,14 @@ func _on_continue_pressed() -> void:
 
 func _process(delta: float) -> void:
 	move_sens_display.text = str(int(move_sensi_slider.value))
+	
+	if Input.is_action_just_pressed("Esc") and !visible:
+		#if !Global.laying:
+		show()
+		Global.in_menu = true
+	elif Input.is_action_just_pressed("Esc") and visible:
+		hide()
+		Global.in_menu = false
 
 func _on_exit_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Start.tscn")
@@ -76,22 +89,15 @@ func updateDikt():
 func save_data(path, data):
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	
-	if file:
-		file.store_line(JSON.stringify(data))
-		file.close()
+	file.store_line(JSON.stringify(settings))
+	file.close()
 
 func load_data_from_file(path):
 	var file = FileAccess.open(path, FileAccess.READ)
-	if file:
-		var data = file.get_as_text()
-		file.close()
-		return JSON.parse_string(data)
-	else:
-		return ""
-
-func load_data_in():
-	settings = load_data_from_file(settings_save_path)
 	
-	Global.move_sensi = settings["MoveSensi"]
-	move_sensi_slider.value = settings["MoveSensi"]
+	var data = file.get_as_text()
+	file.close()
+	var parsed_data = JSON.parse_string(data)
+	Global.move_sensi = parsed_data["MoveSensi"]
+	move_sensi_slider.value = parsed_data["MoveSensi"]
 	Global.emit_signal("change_move_sensi")
