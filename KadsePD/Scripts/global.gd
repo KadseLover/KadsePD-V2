@@ -20,11 +20,11 @@ var build_coords
 var one_build_dragged
 var cam_start_pos : Vector2i
 var move_sensi = 20
-var building_counter
 
 var loaded_building_arr = []
 var loaded_text_arr = []
 var loaded_belt_arr = []
+var loaded_notes_string = ""
 
 
 signal light_cancel_belt

@@ -390,7 +390,6 @@ offset_bottom = 365.0
 text = "Finish"
 
 [node name="Labels" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 579.0

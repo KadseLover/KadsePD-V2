@@ -16,6 +16,7 @@ extends Node2D
 @onready var buildings: Node2D = $Buildings
 @onready var texts: Node2D = $Texts
 @onready var belts: Node2D = $Belts
+@onready var notes: TextEdit = $CanvasLayer/Pause_menu/Background/Box/Notes
 var PIPE = preload("res://Scenes/pipe.tscn")
 var CONSTRUCTOR = preload("res://Scenes/Buildings/constructor.tscn")
 var FOUNDRY = preload("res://Scenes/Buildings/foundry.tscn")
@@ -27,6 +28,9 @@ var TEXT = preload("res://Scenes/text.tscn")
 
 func _ready() -> void:
 	spawn_loaded_building(Global.loaded_building_arr)
+	spawn_loaded_text(Global.loaded_text_arr)
+	spawn_loaded_belt(Global.loaded_belt_arr)
+	notes.text = Global.loaded_notes_string
 	del_ramen.show()
 	del_ramen.color = Color.hex(0xffffff00)
 	get_tree().root.size_changed.connect(resize) 
@@ -41,9 +45,8 @@ func resize():
 	del_ramen.size = screen_size
 
 func _process(delta: float) -> void:
-	counter()
 	fps.set_text("FPS: %d" % Engine.get_frames_per_second())
-	coords.text = "Position: " + str(Global.build_coords)
+	coords.text = "Position: " + str(Global.g_tile_pos)
 	move_sensi.text = "Move Sensitivity: " + str(int(Global.move_sensi))
 
 func _input(event: InputEvent) -> void:
@@ -53,7 +56,7 @@ func _input(event: InputEvent) -> void:
 		labels.hide()
 	
 	if Input.is_action_just_pressed("Cancel"):
-		pause_menu.show()
+		#pause_menu.show()
 		Global.in_menu = true
 	
 	if Global.in_menu:
@@ -179,9 +182,6 @@ func is_position_occupied(position: Vector2) -> bool:
 		if building.position.distance_to(position) < 50:  # Adjust the distance threshold as needed
 			return true
 	return false
-
-func counter():
-	Global.building_counter =+ buildings.get_children().size() / 2
 
 func _on_constructor_pressed() -> void:
 	spawn_constructor()

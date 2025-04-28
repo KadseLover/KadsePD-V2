@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://blflfmfw4240f" path="res://Assets/Anderes/Theme.tres" id="2_j8bu1"]
 [ext_resource type="Script" uid="uid://buudnc2v5yn51" path="res://Scripts/load_manager.gd" id="4_1lxxj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4ycm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lxxj"]
 shader = ExtResource("1_y4ycm")
 shader_parameter/brightness = 2.0
 shader_parameter/thickness = 2.0
@@ -21,7 +21,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Panel" type="ColorRect"]
-material = SubResource("ShaderMaterial_y4ycm")
+material = SubResource("ShaderMaterial_1lxxj")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,81 +77,67 @@ metadata/_tab_index = 0
 
 [node name="name_display" type="Label" parent="TabContainer/New save"]
 layout_mode = 2
-offset_left = 15.0
-offset_top = 67.0
-offset_right = 410.0
-offset_bottom = 90.0
+anchor_left = 0.0352941
+anchor_top = 0.385057
+anchor_right = 0.964706
+anchor_bottom = 0.517241
 theme_override_styles/normal = SubResource("StyleBoxFlat_tp0vs")
 text = "sda"
+metadata/_edit_use_anchors_ = true
 
 [node name="size_display" type="Label" parent="TabContainer/New save"]
 layout_mode = 2
-offset_left = 15.0
-offset_top = 141.0
-offset_right = 410.0
-offset_bottom = 164.0
+anchor_left = 0.0352941
+anchor_top = 0.810345
+anchor_right = 0.964706
+anchor_bottom = 0.942529
 theme_override_styles/normal = SubResource("StyleBoxFlat_tp0vs")
 text = "dsf"
+metadata/_edit_use_anchors_ = true
 
 [node name="Name" type="LineEdit" parent="TabContainer/New save"]
 layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = 15.0
-offset_right = -15.0
-offset_bottom = -114.0
+anchor_left = 0.0352941
+anchor_top = 0.0862069
+anchor_right = 0.964706
+anchor_bottom = 0.344828
 text = "Print"
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Size" type="HSlider" parent="TabContainer/New save"]
 layout_mode = 2
-offset_left = 15.0
-offset_top = 113.0
-offset_right = 410.0
-offset_bottom = 129.0
+anchor_left = 0.0352941
+anchor_top = 0.649425
+anchor_right = 0.964706
+anchor_bottom = 0.741379
 max_value = 1000.0
 step = 50.0
 value = 100.0
 rounded = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="Button" parent="TabContainer/New save"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = 97.0
-offset_right = 47.0
-offset_bottom = 129.0
+anchors_preset = -1
+anchor_left = 0.389412
+anchor_top = 1.05747
+anchor_right = 0.610588
+anchor_bottom = 1.24138
+offset_bottom = 1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_j8bu1")
 text = "Start"
+metadata/_edit_use_anchors_ = true
 
 [node name="Load_save" type="Panel" parent="TabContainer"]
 layout_mode = 2
 theme = ExtResource("2_j8bu1")
 script = ExtResource("4_1lxxj")
 metadata/_tab_index = 1
-
-[node name="last_save" type="LineEdit" parent="TabContainer/Load_save"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -194.5
-offset_top = -44.5
-offset_right = 195.5
-offset_bottom = -4.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_j8bu1")
-text = "bdfgdfgdfg"
-editable = false
 
 [node name="load" type="Button" parent="TabContainer/Load_save"]
 layout_mode = 1
@@ -160,13 +146,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = 29.5
+offset_left = -64.5
+offset_top = -16.0
 offset_right = 65.5
-offset_bottom = 61.5
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Select file"
+text = "Select a file"
 
 [node name="FileDialog" type="FileDialog" parent="TabContainer/Load_save/load"]
 title = "Open a File"
@@ -177,12 +163,12 @@ use_native_dialog = true
 
 [node name="Label" type="Label" parent="TabContainer/Load_save"]
 layout_mode = 0
-offset_left = 18.5
-offset_top = 12.5
-offset_right = 95.5
-offset_bottom = 35.5
+offset_left = 8.5
+offset_top = 15.5
+offset_right = 143.5
+offset_bottom = 38.5
 theme_override_styles/normal = SubResource("StyleBoxFlat_1lxxj")
-text = "Last path:"
+text = "Select a JSON file:"
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="TabContainer/New save/Start" to="." method="_on_start_pressed"]

@@ -1,10 +1,8 @@
-res://Scenes/Start.tscn
+res://Scenes/print.tscn
 res://Assets/Anderes/shader/grid_hauptmenu.gdshader
 res://Assets/Anderes/Theme.tres
-res://Scripts/global.gd
-res://Scripts/load_manager.gd
-res://Scripts/print.gd
-res://Scenes/print.tscn
+res://Scripts/Menus/pause_menu.gd
+res://Scenes/Start.tscn
 res://Scenes/belt.tscn
 res://Scenes/pipe.tscn
 res://Scenes/selection.tscn
@@ -13,7 +11,4 @@ res://Scenes/Buildings/Test_building.tscn
 res://Scenes/Buildings/splitter.tscn
 res://Scenes/Buildings/foundry.tscn
 res://Scenes/Buildings/smelter.tscn
-res://Scripts/save_manager.gd
-res://Scripts/Menus/start.gd
-res://Saves/Settings.json
-res://fdsfsd.json
+res://Scripts/print.gd

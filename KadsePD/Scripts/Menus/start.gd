@@ -4,15 +4,14 @@ extends ColorRect
 @onready var size_display: Label = $"TabContainer/New save/size_display"
 @onready var name_: LineEdit = $"TabContainer/New save/Name"
 @onready var size_: HSlider = $"TabContainer/New save/Size"
-@onready var last_save: LineEdit = $TabContainer/Load_save/last_save
 
 
 var can_start
 
-var settings_path = "res://Saves/Settings.json"
+var settings_path = "user://Settings.json"
 
 func _ready() -> void:
-	last_save.text = load_path(settings_path)
+	pass
 
 
 func _process(delta: float) -> void:
@@ -37,17 +36,3 @@ func _on_start_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
-
-func load_path(path):
-	var file = FileAccess.open(path, FileAccess.READ)
-	
-	if file:
-		var data = file.get_as_text()
-		file.close()
-		var parsed_data = JSON.parse_string(data)
-		if parsed_data.has("Save-path"):
-			return parsed_data["Save-path"]
-		else:
-			return "No last path saved"
-	else:
-		return ""

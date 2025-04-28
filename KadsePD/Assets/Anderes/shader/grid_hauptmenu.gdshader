@@ -19,7 +19,7 @@ vec2 rotate(vec2 uv, float angle) {
 void fragment() {
 	vec2 uv = UV - 0.5;
 	uv.x *= resolution.x / resolution.y;
-	uv -= vec2(TIME * 0.1, TIME * 0.1);
+	uv -= vec2(TIME * 0.07, TIME * 0.07);
 	//uv = rotate(uv, TIME * 0.9);
 	//float zoom = 4.0 + abs(cos(TIME * 0.3) * sin(TIME * 0.3)) * 30.0;
 	float line_thickness = zoom * thickness / resolution.y;

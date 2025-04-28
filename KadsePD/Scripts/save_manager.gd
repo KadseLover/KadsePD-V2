@@ -4,6 +4,7 @@ extends Node
 @onready var buildings: Node2D = $"../Buildings"
 @onready var texts: Node2D = $"../Texts"
 @onready var belts: Node2D = $"../Belts"
+@onready var notes: TextEdit = $"../CanvasLayer/Pause_menu/Background/Box/Notes"
 
 var all_data = {}
 var buildings_data = {}
@@ -12,7 +13,7 @@ var belts_data = {}
 
 @onready var file_save: FileDialog = $FileSave
 
-var settings_path = "res://Saves/Settings.json"
+var settings_path = "user://Settings.json"
 
 func gather_building_data(building):
 	return {
@@ -65,17 +66,22 @@ func gather_print_data():
 		"Print-size": Global.print_size
 	}
 
+func gather_notes():
+	return {
+		"Notes-text": notes.text
+	}
+
 func save(path):
 	all_data["Building"] = buildings_data
 	all_data["Text"] = texts_data
 	all_data["Belt"] = belts_data
 	all_data["Print"] = gather_print_data()
+	all_data["Note"] = gather_notes()
 	
 	buildings_data = {}
 	texts_data = {}
 	belts_data = {}
 	
-	print_rich("[color=green] %s [/color]" % all_data)
 	
 	var json_string = JSON.stringify(all_data)
 	var file = FileAccess.open(path, FileAccess.WRITE)
@@ -91,16 +97,3 @@ func _on_file_save_file_selected(path: String) -> void:
 	loopTexts()
 	loopBelts()
 	save(path)
-	save_path_settings(settings_path, path)
-
-
-func save_path_settings(path, data):
-	var file = FileAccess.open(path, FileAccess.READ_WRITE)
-	
-	var old_data = file.get_as_text()
-	var parsed_old_data = JSON.parse_string(old_data)
-	
-	parsed_old_data["Save-path"] = data
-	
-	file.store_line(JSON.stringify(parsed_old_data))
-	file.close()

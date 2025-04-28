@@ -46,7 +46,11 @@ func load_(path):
 				Global.print_name = json_data["Print"][key]
 			else:
 				Global.print_size = json_data["Print"][key]
-
+	
+	for key in json_data["Note"].keys():
+		if "Note" in key:
+			print(json_data["Note"][key])
+			Global.loaded_notes_string = json_data["Note"][key]
 
 func assign_build_data(buildings_data):
 	# Loading the data for the Buildings in buildings_data
@@ -78,6 +82,7 @@ func assign_text_data(texts_data):
 	# Assign the text and spawn the text
 	new_text.text = texts_data["Text-text"]
 	Global.loaded_text_arr.append(new_text)
+	print_rich("[color=lightgreen] %s [/color]" % Global.loaded_text_arr)
 	
 func assign_belt_data(belts_data):
 	var belt_id = int(belts_data["Belt-typ"])
