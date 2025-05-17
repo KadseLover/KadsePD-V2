@@ -119,9 +119,11 @@ func spawn_loaded_belt(belt_arr):
 
 
 func spawn_text():
-	var new_text = TEXT.instantiate()
-	new_text.position = get_global_mouse_position()
-	texts.add_child(new_text)
+	var new_position = get_global_mouse_position()
+	if not is_position_occupied(new_position):
+		var new_text = TEXT.instantiate()
+		new_text.position = new_position
+		texts.add_child(new_text)
 
 func belt_cancel():
 	Global.building = true

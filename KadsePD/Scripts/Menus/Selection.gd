@@ -11,6 +11,7 @@ var shape_size = 20
 
 @onready var area: Area2D = $"../Area2D"
 @onready var shape: CollisionShape2D = $"../Area2D/CollisionShape2D"
+@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 
 func _ready() -> void:
 	shape.disabled = true
@@ -20,11 +21,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("LMB"):
 		Global.AABB_ = false
+		animation_player.play("Fade_out")
 		dragging = false
-		position = Vector2.ZERO
-		size = Vector2.ZERO
-		shape.disabled = true
-		Global.emit_signal("AABB_hiden")
 	
 	if Global.building_focus or Global.in_menu or Global.con_menu_mouse or Global.text_focus:
 		return
@@ -34,6 +32,7 @@ func _input(event: InputEvent) -> void:
 		position = start
 		dragging = true
 		shape.disabled = false
+		animation_player.play("Fade_in")
 		
 func _process(delta: float) -> void:
 	Global.selection_visible = visible
@@ -66,3 +65,10 @@ func calc_middle(a_x, b_x, a_y, b_y):
 	M_y = a_y + b_y / 2
 	M = Vector2(M_x, M_y)
 	return M
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Fade_out":
+		position = Vector2.ZERO
+		size = Vector2.ZERO
+		shape.disabled = true

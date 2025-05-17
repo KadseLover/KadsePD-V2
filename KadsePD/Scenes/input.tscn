@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://caq3viw5ecafn"]
+
+[ext_resource type="Texture2D" uid="uid://dq7o1n3heump0" path="res://Assets/Anderes/Input.svg" id="1_nnn5i"]
+
+[node name="Input" type="Sprite2D"]
+texture = ExtResource("1_nnn5i")

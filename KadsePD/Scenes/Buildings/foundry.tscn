@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1l0yc27p1bfx"]
+[gd_scene load_steps=5 format=3 uid="uid://b1l0yc27p1bfx"]
 
 [ext_resource type="Texture2D" uid="uid://by0qe6r51reji" path="res://Assets/Buildings/Foundry.png" id="1_1erwk"]
 [ext_resource type="Script" uid="uid://sdijy2o8siy0" path="res://Scripts/building.gd" id="2_p3a25"]
+[ext_resource type="Script" uid="uid://c1r4cmanvegjt" path="res://addons/in-output_manager/point_manager_node.gd" id="3_waxak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2y1c"]
 size = Vector2(679, 792.167)
@@ -28,6 +29,16 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(9.15527e-05, 9.15527e-05)
 shape = SubResource("RectangleShape2D_w2y1c")
+
+[node name="PointManager" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("3_waxak")
+Inputs = PackedVector3Array(-160, 260, 0, 160, 260, 0)
+Outputs = PackedVector3Array(-152.89, -323.245, 0, 160, -233.315, 0)
+crosshair_size = 564.0
+crosshair_thickness = 5.0
+Scale = null
+metadata/_custom_type_script = "uid://c1r4cmanvegjt"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
