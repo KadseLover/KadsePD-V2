@@ -100,11 +100,11 @@ func _draw():
 				crosshair_thickness
 			)
 
-#func _process(delta: float) -> void:
-	#if Global.laying or Global.building:
-		#visible = true
-	#else:
-		#visible = false
+func _process(delta: float) -> void:
+	if Global.laying or Global.building:
+		visible = true
+	else:
+		visible = false
 
 func _ready() -> void:
 	z_index = 1

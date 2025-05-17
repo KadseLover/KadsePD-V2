@@ -1,16 +1,3 @@
-res://Scenes/input.tscn
+res://Scenes/Buildings/constructor.tscn
 res://Assets/Anderes/shader/grid_hauptmenu.gdshader
 res://Assets/Anderes/Theme.tres
-res://addons/in-output_manager/point_manager_node.gd
-res://Scenes/Start.tscn
-res://Scenes/print.tscn
-res://Scenes/belt.tscn
-res://Scenes/pipe.tscn
-res://Scenes/selection.tscn
-res://Scenes/text.tscn
-res://Scenes/Buildings/Test_building.tscn
-res://Scenes/Buildings/splitter.tscn
-res://Scenes/Buildings/foundry.tscn
-res://Scenes/Buildings/smelter.tscn
-res://Scenes/output.tscn
-res://Scenes/Buildings/constructor.tscn
