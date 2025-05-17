@@ -9,7 +9,7 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[node name="Belt" type="Line2D" groups=["Pipes"]]
+[node name="Belt" type="Line2D"]
 z_as_relative = false
 points = PackedVector2Array(0, 0)
 width = 30.0

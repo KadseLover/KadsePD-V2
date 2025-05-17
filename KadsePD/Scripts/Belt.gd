@@ -23,23 +23,23 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	# Add Colision Shapes to belt:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			panel.hide()
-			spawnt = false
-			add_point(Global.g_tile_pos)
-			if points.size() != 2:
-				for i in points.size() - points.size() + 1:
-					var new_shape = CollisionShape2D.new()
-					new_shape.debug_color = Color.CHARTREUSE
-					new_shape.modulate.a = 0.5
-					static_body.add_child(new_shape)
-					var rect = RectangleShape2D.new()
-					new_shape.position = (points[point] + points[last_point]) / 2
-					new_shape.rotation = points[point].direction_to(points[last_point]).angle()
-					var length = points[point].distance_to(points[last_point])
-					rect.extents = Vector2(length / 2, width / 2)
-					new_shape.shape = rect
+	if Input.is_action_just_pressed('LMB'):
+		panel.hide()
+		spawnt = false
+		add_point(Global.g_tile_pos)
+		print_rich("[color=lightgreen] Neuer Punkt [/color]")
+		if points.size() != 2:
+			for i in points.size() - points.size() + 1:
+				var new_shape = CollisionShape2D.new()
+				new_shape.debug_color = Color.CHARTREUSE
+				new_shape.modulate.a = 0.5
+				static_body.add_child(new_shape)
+				var rect = RectangleShape2D.new()
+				new_shape.position = (points[point] + points[last_point]) / 2
+				new_shape.rotation = points[point].direction_to(points[last_point]).angle()
+				var length = points[point].distance_to(points[last_point])
+				rect.extents = Vector2(length / 2, width / 2)
+				new_shape.shape = rect
 	
 	if id == 1:
 		if Input.is_action_just_pressed("Belts"):
@@ -51,7 +51,7 @@ func _input(event: InputEvent) -> void:
 			can_revert = false
 			cancelt = true
 			Global.light_cancel_pipe.emit()
-	
+
 	if Input.is_action_just_pressed("Cancel"):
 		Global.can_get_back = false
 		can_revert = false
@@ -64,7 +64,6 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("revert") and can_revert:
 		remove_point(point)
 		static_body.get_children().back().queue_free()
-
 
 func _process(delta: float) -> void:
 	point = get_point_count() - 1

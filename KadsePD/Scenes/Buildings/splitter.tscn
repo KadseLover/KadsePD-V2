@@ -21,6 +21,7 @@ offset_right = 308.0
 offset_bottom = 308.0
 mouse_filter = 2
 color = Color(0.32549, 1, 1, 0.372549)
+metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

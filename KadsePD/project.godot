@@ -30,6 +30,19 @@ gdscript/warnings/unused_local_constant=0
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/in-output_manager/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "yellow",
+"res://Scenes/": "blue",
+"res://Scripts/": "green",
+"res://addons/": "pink"
+}
+
 [global_group]
 
 Selectet="Selectet Buildings"

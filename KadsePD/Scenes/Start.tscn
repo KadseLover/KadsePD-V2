@@ -67,10 +67,9 @@ offset_right = 212.5
 offset_bottom = 102.5
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="New save" type="Panel" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_j8bu1")
 metadata/_tab_index = 0
@@ -134,6 +133,7 @@ text = "Start"
 metadata/_edit_use_anchors_ = true
 
 [node name="Load_save" type="Panel" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_j8bu1")
 script = ExtResource("4_1lxxj")
